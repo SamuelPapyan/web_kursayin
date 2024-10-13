@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Samvel Papyan HTT124</title>
+</head>
+<body>
+<div class="header">
+    <ul class="menu">
+        <a href="#start"><li>Սկիզբ</li></a>
+        <a href="#intro"><li>Ներածություն</li></a>
+        <a href="#features"><li>Առանձնահատկություններ</li></a>
+        <a href="#keyframes"><li>Keyframes</li></a>
+        <a href="#properties"><li>Հատկություններ</li></a>
+        <a href="#examples"><li>Օրինակներ</li></a>
+    </ul>
+</div>
+<div class="container">
+<div id="start" class="slide-white">
+    <h1>CSS3 Animations</h1>
+    <div class="slide-content">
+        <img src="images/start.PNG">
+    </div>
+</div>
+<div id="intro" class="slide-white">
+    <h2>Ներածություն</h2>
+    <div class="slide-content">
+        <p>CSS անիմացիաները համարվուն են CSS3-ի առանձնահատկություններից մեկը։</p>
+        <p>Նրանց միջոցով կարելի է ստեղծել դինամիկ ոճերով էլէեմենտներ։</p>
+        <p>Անիմացիան թույլ է տալիս տարրին աստիճանաբար փոխել մի ոճից մյուսը:</p>
+    </div>
+</div>
+<div id="features" class="slide-white">
+    <h2>Առանձնահատկություններ</h2>
+    <div class="slide-content">
+        <p>Դրանով կարելի է ստեղծել անիմացիա չունենալով JavaScript-ի գիտելիքները։</p>
+        <p>Թույլ է տալիս վեբ-զնարկիչին կառավարել անիմացիաների հերթականությունը` դրանով իսկ բարձրացնելով դրա արտադրողականությունը և արդյունաբերությունը։</p>
+        <p>Ի տարբերություն CSS անցումների (transitions), որոնք փոխում եմ ոճի վիճակը երկու կադրերով (սկիզբն ու վերջը), այն փոխում է դա երկուսից ավել կադրերով, այսինքն՝ միջանկյալ կադրերով։</p>
+    </div>
+</div>
+<div id="keyframes" class="slide-white">
+    <h2>Բանալինային կադրեր (keyframes)</h2>
+    <div class="slide-content">
+        <p>Անիմացիաներ ստեղծելու համար առաջին հեռթին պետք է ստեղծել բանալինային կադրեր (keyframes): Ամեն կադրը պարունակում է մի շարք հատկություններ, որոնք կփոխվեն դրան համապատասխան ժամանակաշրջաններում։</p>
+        <div class="d-flex w-100 align-items-center">
+            <img src="images/keyframe_definition.PNG" class="keyframes-definition" alt="keyframes_definition">
+            <div>
+                <p>Բանալինային կադրեր (keyframes) սահմանելիս պետք է սահմանել 2 հիմնական կադրերը</p>
+                <ul>
+                    <li><b>from</b> - սկզբնական կադրը, որտեղից էլեմենտի հատկությունները կարող են փոխվել</li>
+                    <li><b>to</b> - վերջնական կադրը, ուրտեղ հաստատվում է փոփոխվող հատկությունների վերջնական վիճակը</li>
+                </ul>
+                <p>Սակայն դրանց միջև կարելի է ավելացնել միջանկյալ կադրեր, որոնք նշվում են տոկոսներով <b>(1%-99%)</b></p>
+            </div>
+            <div>
+                <p class="example">Օրինակ</p>
+                <img src="images/keyframe_example.PNG" class="keyframes-example">
+            </div>
+        </div>
+    </div>
+</div>
+<div id="properties" class="slide-white">
+    <h2>CSS3 Animation-ի հատկությունները</h2>
+    <div class="slide-content property-list">
+<div class="property anim-name">
+    <h2>animation-name</h2>
+    <p>Ստանում է սահմանված բանալինային կադրերի (keyframes) անունը, որը կարգավորում է անիմացիայի կադրերը։</p>
+    <p>
+        <span class="property-name">animation-name:</span>
+        <span class="property-values">անիմացիայի_անոն</span>
+    </p>
+</div>
+<div class="property anim-duration">
+    <h2>animation-duration</h2>
+    <p>Սահմանում է անիմացիայի մեկ ցիկլի տևողությունը։</p>
+    <p>
+        <span class="property-name">animation-duration:</span>
+        <span class="property-values">ժամանակը (s, ms)</span>
+    </p>
+</div>
+<div class="property anim-timing-function">
+    <h2>animation-timing-function</h2>
+    <p>Սահմանում է անիմացիայի արագության բաշխումը ժամանակի ընթացքում։</p>
+    <p>
+        <span class="property-name">animation-timing-function:</span>
+        <span class="property-values">linear | ease | ease-in | ease-out | ... | ժամանակային ֆունկցիա</span>
+    </p>
+</div>
+
+<div class="property anim-delay">
+    <h2>animation-delay</h2>
+    <p>Սահմանում է սպասման ժամանակը անիմացիայի սկզբից առաջ</p>
+    <p>
+        <span class="property-name">animation-delay:</span>
+        <span class="property-values">ժամանակը (s, ms)</span>
+    </p>
+</div>
+<div class="property anim-iteration-count">
+    <h2>animation-iteration-count</h2>
+    <p>Սահմանում է անիմացիայի կրկնության քանակը:</p>
+    <p>
+        <span class="property-name">animation-iteration-count:</span>
+        <span class="property-values">թիվ | infinite</span>
+    </p>
+    <p>
+        <span class="property-values">infinite</span> արժեքի դեպքում անիմացիան կրկնվում է անվերջ
+    </p>
+</div>
+<div class="property anim-direction">
+    <h2>animation-direction</h2>
+    <p>Սահմանում է անիմացիայի անցման ուղղությունը:</p>
+    <p>
+        <span class="property-name">animation-direction:</span>
+        <span class="property-values">normal | reverse | alternate | alternate-reverse</span>
+    </p>
+    <p><span class="property-values">normal</span> - նորմալ կադրերի հեռթականությունը</p>
+    <p><span class="property-values">reverse</span> - հակառակ կադրերի հեռթականություն</p>
+    <p><span class="property-values">alternate</span> - կենտ կրկնության դեպքում կադրերի հեռթականությանը նորմալ է, իսկ զույգի դեպքում՝ հակառակ</p>
+    <p><span class="property-values">alternate-reverse</span> - կենտ կրկնության դեպքում կադրերի հեռթականությանը հակառակ է, իսկ զույգի դեպքում՝ նորմալ</p>
+</div>
+
+<div class="property anim-fill-mode flex-2">
+    <h2>animation-fill-mode</h2>
+    <p>Սահմանում է էլէմենտի վիճակը անիմացիայի անցումից առաջ կամ հետո</p>
+    <p>
+        <span class="property-name">animation-fill-mode:</span>
+        <span class="property-values">none | forward | backward | both</span>
+    </p>
+    <p><span class="property-values">none</span> - էլեմենտի ոճը մնում է սկզբնական վիճակում</p>
+    <p><span class="property-values">forward</span> - էլեմենտի ոճը ստանում է անիմացիայի վերջին կադրի վիճակը դրա ավարտից հետո</p>
+    <p><span class="property-values">backward</span> - էլեմենտի ոճը ստանում է անիմացիայի առաջին կադրի վիճակը դրա ավարտից հետո</p>
+    <p><span class="property-values">both</span> - էլեմենտը կվարվի ինչպես մինագամից և՛ forward-ի և՛ backward-ի արժեքների դեպքում</p>
+</div>
+<div class="property anim-play-state">
+    <h2>animation-play-state</h2>
+    <p>Սահմանում է անիմացիայի անցման վիճակը:</p>
+    <p>
+        <span class="property-name">animation-play-state:</span>
+        <span class="property-values">paused | running</span>
+    </p>
+    <p><span class="property-values">paused</span> - կանգնման վիճակ</p>
+    <p><span class="property-values">runnung</span> - անցման վիճակ</p>
+</div>
+<div class="property anim-fill-mode flex-3">
+    <h2>animation</h2>
+    <p>Բոլոր վերը նշված հատկությունների միավորումն է։</p>
+    <p>
+        <span class="property-name">animation:</span>
+        <span class="property-values">name duration timing-function delay iteration-count direction fill-mode</span>
+    </p>
+    <p><span class="property-values">name</span> - animation-name հատկության արժեք</p>
+    <p><span class="property-values">duration</span> - animation-duration հատկության արժեք</p>
+    <p><span class="property-values">timing-function</span> - animation-timing-function հատկության արժեք</p>
+    <p><span class="property-values">delay</span> - animation-delay հատկության արժեք</p>
+    <p><span class="property-values">iteration-count</span> - animation-iteration-count հատկության արժեք</p>
+    <p><span class="property-values">direction</span> - animation-direction հատկության արժեք</p>
+    <p><span class="property-values">fill-mode</span> - animation-fill-mode հատկության արժեք</p>
+</div>
+
+
+    </div>
+</div>
+<div id="examples" class="slide-white">
+    <h2>Օրինակներ</h2>
+    <div class="slide-content">
+<div class="example-sample example-1">
+    <h2>Օրինակ 1</h2>
+    <div class="example-flex">
+        <div class="code-snippet">
+            <pre>
+                @keyframes myAnimation {
+                    from {
+                        background-color: red;
+                    }
+                
+                    50% {
+                        background-color: blue;
+                        transform: scale(1.5);
+                    }
+                
+                    to {
+                        background-color: orange;
+                    }
+                }
+                
+                div {
+                    width: 100px;
+                    height: 100px;
+                    background-color: red;
+                    border-radius: 50%;
+                    margin: 70px auto;
+                }
+                
+                div:hover {
+                    animation-name: myAnimation;
+                    animation-duration: 3s;
+                }
+            </pre>
+        </div>
+        <div class="preview">
+            <div class="testing-element"></div>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+</div>
+<div class="footer">
+    <p>NPUA &copy; 2024</p>
+</div>
+</body>
+</html>

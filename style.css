@@ -1,0 +1,369 @@
+* {
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.header {
+    position:sticky;
+    top:0;
+    background-color: orange;
+    margin: 0;
+    padding: 10px;
+}
+
+.footer {
+    background-color: orange;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+.header .menu {
+    display:flex;
+    justify-content: space-evenly;
+    list-style: none;
+}
+
+.header .menu a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    background-color: orange;
+    border: 1px solid white;
+    border-radius: 25px;
+    padding: 10px;
+    transition: padding 0.5s, color 0.5s;
+}
+
+
+
+.slide {
+    background-color: orange;
+    padding: 10px;
+    padding-top:100px;
+}
+
+.slide p, .slide ul li{
+    font-size: 20px;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+.keyframes-definition {
+    width:50%;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.align-items-center {
+    align-items: center;
+}
+.example {
+    font-weight:bold;
+    font-size: 24px;
+    color: orange;
+    text-align: center;
+}
+
+.keyframes-definition {
+    width: 25%;
+    display: block;
+    margin: auto;
+}
+
+.slide-content {
+    background-color: white;
+    padding: 10px;
+    border-radius: 25px;
+    border:1px solid orange;
+}
+
+.container {
+    width:90%;
+    margin:auto;
+}
+
+.slide h2 {
+    text-align: center;
+    color: white;
+}
+
+.slide-white {
+    background-color: white;
+    padding: 10px;
+}
+
+.slide-white h2 {
+    text-align: center;
+    color: orange;
+}
+
+.slide-white-content {
+    background-color: orange;
+    border-radius: 25px;
+    padding:10px;
+}
+
+#start img {
+    width:70%;
+    display:block;
+    margin: 10px auto;
+    border-radius: 25px;
+    border: 5px solid orange;
+}
+
+#start {
+    margin-bottom: 10px;
+}
+
+#start h1 {
+    font-size: 48px;
+    color: orange;
+}
+
+.footer p {
+    font-weight: bold;
+    color: white;
+    text-align: right;
+}
+
+.property h2 {
+    font-size: 24px;
+    color: #a1a1a1;
+    font-weight: bold;
+
+}
+
+::-webkit-scrollbar {
+    width: 0.5em;
+    border-radius: 10px;
+}
+
+.property {
+    width: 30%;
+    height: 320px;
+    border: 1px solid orange;
+    border-radius: 10px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.property::-webkit-scrollbar-track {
+    border-top: 1px solid orange;
+    border-bottom: 1px solid orange;
+    border-radius: 25px;
+}
+::-webkit-scrollbar-track{
+    box-shadow: none;
+    background: white;
+}
+
+::-webkit-scrollbar-thumb{
+    box-shadow: none;
+    background: orange;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: darkorange;
+}
+
+.property p {
+    text-align: center;
+}
+
+.flex-3 {
+    width: 93%;
+}
+
+.flex-2 {
+    width: 60%;
+}
+
+.property-name {
+    color: orange;
+    font-weight: bold;
+}
+
+.property-values {
+    color: violet;
+}
+
+.property-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.example-flex {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.code-snippet, .preview {
+    width: 49%;
+    height: 300px;
+    border: 1px solid orange;
+    border-radius: 25px;
+}
+
+.code-snippet {
+    overflow: auto;
+}
+
+.example-sample h2 {
+    color: orange;
+}
+
+@keyframes myAnimation {
+    from {
+        background-color: red;
+    }
+
+    50% {
+        background-color: blue;
+        transform: scale(1.5);
+    }
+
+    to {
+        background-color: orange;
+    }
+}
+
+.testing-element {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 50%;
+    margin: 70px auto;
+}
+
+.testing-element:hover {
+    animation-name: myAnimation;
+    animation-duration: 3s;
+}
+/* kursayin.html */
+.sidebar {
+    display:inline-block;
+    width: 300px;
+    background-color: orange;
+    padding: 10px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+.sidebar .menu {
+    padding: 0;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    list-style: none;
+}
+
+.sidebar .menu a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    background-color: orange;
+    border: 1px solid white;
+    border-radius: 25px;
+    padding: 10px;
+    transition: padding 0.5s, color 0.5s;
+    margin-bottom: 10px;;
+}
+
+.sidebar .header .menu a:hover {
+    color: orange;
+    font-size: 24px;
+    background-color: white;
+}
+
+.sidebar .header .menu a:active {
+    color: orange;
+    font-size: 24px;
+    background-color: white;
+}
+
+.kurs-container {
+    display: flex;
+}
+
+.test {
+    
+}
+
+.question {
+    background-color: orange;
+    padding: 10px;
+    font-weight: bold;
+    color: white;
+}
+
+.answer-group {
+    background-color:white;
+    display: flex;
+    align-items: center;
+}
+
+.answer-group label{
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+.answer-group  input{
+    height: 25px;
+    width: 25px;
+    accent-color: orange;
+    background-color: #ccc;
+}
+
+.sidebar .menu a:hover {
+    color: orange;
+    padding: 20px 10px;
+    background-color: white;
+}
+
+#seo video {
+    width: 80%;
+    display: inline-block;
+    
+}
+
+#seo p{
+    font-size: 20px;
+}
+
+.highlight {
+    font-weight: bold;
+    color: orange;
+}
+
+.italic {
+    font-style: italic;
+}
