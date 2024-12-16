@@ -1,12 +1,58 @@
-<div class="property anim-fill-mode flex-2">
-    <h2>animation-fill-mode</h2>
-    <p>Սահմանում է էլէմենտի վիճակը անիմացիայի անցումից առաջ կամ հետո</p>
-    <p>
-        <span class="property-name">animation-fill-mode:</span>
-        <span class="property-values">none | forward | backward | both</span>
-    </p>
-    <p><span class="property-values">none</span> - էլեմենտի ոճը մնում է սկզբնական վիճակում</p>
-    <p><span class="property-values">forward</span> - էլեմենտի ոճը ստանում է անիմացիայի վերջին կադրի վիճակը դրա ավարտից հետո</p>
-    <p><span class="property-values">backward</span> - էլեմենտի ոճը ստանում է անիմացիայի առաջին կադրի վիճակը դրա ավարտից հետո</p>
-    <p><span class="property-values">both</span> - էլեմենտը կվարվի ինչպես մինագամից և՛ forward-ի և՛ backward-ի արժեքների դեպքում</p>
+<div class="prop-flex-box">
+    <!htmpy tries/animation-fill-mode-try !>
+    <div class="property">
+        <h2>animation-fill-mode</h2>
+        <button class="prop-detail-toggle">
+            Մանրամասներ
+        </button>
+    </div>
+    <div class="prop-info">
+        <p>Հատկանշում է, թե ինչ արժեքներ են կիրառվում անիմացիայի կողմից նրա կատարման ժամանակից դուրս:</p>
+    </div>
+    <div class="prop-example">
+        <pre>
+div {
+    -webkit-animation-fill-mode: forwards; /* Chrome, Safari, Opera */
+    animation-fill-mode: forwards;
+}
+            
+        </pre>
+    </div>
+    <div class="prop-details" style="display: none;">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Արժեք</td>
+                    <td>Բնութագիր</td>
+                </tr>
+                <tr>
+                    <td>backwards</td>
+                    <td>Անիմացիան կընդունի keyframe-ում սահմանված հատկության արժեքներ, որոնց միջոցով կսկսվի անիմացիայի առաջին կրկնողությունը, animation-delay-ի կողմից սահմանված ժամանակահատվածում: Այդ արժեքները կամ "from" keyframe-ից են (երբ animation-direction-ը normal կամ alternate է) կամ "to" keyframe-ից (երբ animation-direction-ը reverse կամ alternate-reverse է):</td>
+                </tr>
+                <tr>
+                    <td>both</td>
+                    <td>Անիմացիան կհետևի և forwards-ի և backwards-ի կանոններին: Այսինքն դա կընդլայնի անիմացիայի հատկությունները երկու ուղղություններով:</td>
+                </tr>
+                <tr>
+                    <td>forwards</td>
+                    <td>Անիմացիայի ավարտից հետո (որոշվում է animation-iteration-count-ի կողմից), անիմացիան կընդունի հատկության արժեքներ անիմացիայի ավարտման ժամանակահատվածի համար:</td>
+                </tr>
+                <tr>
+                    <td>none</td>
+                    <td>Անիմացիան չի ընդունի որևէ ոճ մինչ ավարտը կամ ավարտից հետո:</td>
+                </tr>
+                <tr>
+                    <td>initial</td>
+                    <td>Վերագրում է այս հատկությունն իր նախնական արժեքին:</td>
+                </tr>
+                <tr>
+                    <td>inherit</td>
+                    <td>Ժառանգում է այս հատկությունն իր ծնող տարրից:</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="try-box">
+    <a href="animation-fill-mode-try.html">Փորձել</a>
+    </div>
 </div>

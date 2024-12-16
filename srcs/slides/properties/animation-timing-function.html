@@ -1,8 +1,65 @@
-<div class="property anim-timing-function">
-    <h2>animation-timing-function</h2>
-    <p>Սահմանում է անիմացիայի արագության բաշխումը ժամանակի ընթացքում։</p>
-    <p>
-        <span class="property-name">animation-timing-function:</span>
-        <span class="property-values">linear | ease | ease-in | ease-out | ... | ժամանակային ֆունկցիա</span>
-    </p>
+<div class="prop-flex-box">
+    <!htmpy tries/animation-timing-function-try !>
+    <div class="property">
+        <h2>animation-timing-function</h2>
+        <button class="prop-detail-toggle">
+            Մանրամասներ
+        </button>
+    </div>
+    <div class="prop-info">
+        <p>Հատկանշում է անիմացիայի կորության արագությունը:</p>
+    </div>
+    <div class="prop-example">
+        <pre>
+div {
+    -webkit-animation-timing-function: linear; /* Chrome, Safari, Opera */
+    animation-timing-function: linear;
+}
+        </pre>
+    </div>
+    <div class="prop-details" style="display: none;">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Արժեք</td>
+                    <td>Բնութագիր</td>
+                </tr>
+                <tr>
+                    <td>cubic-bezier(<em>n,n,n,n</em>)</td>
+                    <td>Թույլատրելի արժեքներն են 0-ից 1 թվային արժեքները:</td>
+                </tr>
+                <tr>
+                    <td>ease</td>
+                    <td>Անիմացիան կսկսի դանդաղ, այնուհետև կարագանա մինչ դանդաղ ավարտվելը:</td>
+                </tr>
+                <tr>
+                    <td>ease-in</td>
+                    <td>Անիմացիան կունենա դանդաղ սկիզբ:</td>
+                </tr>
+                <tr>
+                    <td>ease-in-out</td>
+                    <td>Անիմացիան կունենա դանդաղ սկիզբ և դանդաղ ավարտ:</td>
+                </tr>
+                <tr>
+                    <td>ease-out</td>
+                    <td>Անիմացիան կունենա դանդաղ ավարտ:</td>
+                </tr>
+                <tr>
+                    <td>linear</td>
+                    <td>Անիմացիան սկզբից մինչև վերջ կունենա նույն արագությունը:</td>
+                </tr>
+                <tr>
+                    <td>initial</td>
+                    <td>Վերագրում է այս հատկությունն իր նախնական արժեքին:</td>
+                </tr>
+                <tr>
+                    <td>inherit</td>
+                    <td>Ժառանգում է այս հատկությունն իր ծնող տարրից:</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="try-box">
+    <a href="animation-timing-function-try.html">Փորձել</a>
+    </div>
 </div>

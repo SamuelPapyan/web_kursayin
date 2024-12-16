@@ -1,15 +1,72 @@
-<div class="property anim-fill-mode flex-3">
-    <h2>animation</h2>
-    <p>Բոլոր վերը նշված հատկությունների միավորումն է։</p>
-    <p>
-        <span class="property-name">animation:</span>
-        <span class="property-values">name duration timing-function delay iteration-count direction fill-mode</span>
-    </p>
-    <p><span class="property-values">name</span> - animation-name հատկության արժեք</p>
-    <p><span class="property-values">duration</span> - animation-duration հատկության արժեք</p>
-    <p><span class="property-values">timing-function</span> - animation-timing-function հատկության արժեք</p>
-    <p><span class="property-values">delay</span> - animation-delay հատկության արժեք</p>
-    <p><span class="property-values">iteration-count</span> - animation-iteration-count հատկության արժեք</p>
-    <p><span class="property-values">direction</span> - animation-direction հատկության արժեք</p>
-    <p><span class="property-values">fill-mode</span> - animation-fill-mode հատկության արժեք</p>
+
+<div class="prop-flex-box">
+    <!htmpy tries/animation-try !>
+    <div class="property">
+        <h2>animation</h2>
+        <button class="prop-detail-toggle">
+            Մանրամասներ
+        </button>
+    </div>
+    <div class="prop-info">
+        <p>Հատկանշում է անիմացիոն բոլոր հատկությունները կրճատ գրելաձևով, բացի animation-play-state հատկությունից:</p>
+    </div>
+    <div class="prop-example">
+        <pre>
+div {
+    -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+    animation: mymove 5s infinite;
+}
+        </pre>
+    </div>
+    <div class="prop-details" style="display: none;">
+        <table class="standart">
+            <tbody><tr>
+              <td>Արժեք</td>
+              <td>Բնութագիր</td>
+            </tr>
+                                  <tr>
+                    <td><em>animation-delay</em></td>
+                    <td>Հատկանշում է ընդմիջում մինչ անիմացիայի սկսելը:</td>
+                </tr>
+                                  <tr>
+                    <td><em>animation-direction</em></td>
+                    <td>Հատկանշում է, արդյո՞ք անիմացիան պետք է խաղա հակառակ յուրաքանչյուր ցիկլում, թե ոչ:</td>
+                </tr>
+                                  <tr>
+                    <td><em>animation-duration</em></td>
+                    <td>Հատկանշում է, թե քանի վայրկյան կամ միլիվայրկյան է անհրաժեշտ անիմացիային մեկ ցիկլ ավարտելու համար:</td>
+                </tr>
+                                  <tr>
+                    <td><em>animation-fill-mode</em></td>
+                    <td>Հատկանշում է, թե ինչ արժեքներ են կիրառվում անիմացիայի կողմից նրա կատարման ժամանակից դուրս:</td>
+                </tr>
+                                  <tr>
+                    <td><em>animation-iteration-count</em></td>
+                    <td>Հատկանշում է, թե քանի անգամ անիմացիան պետք է խաղա:</td>
+                </tr>
+                                  <tr>
+                    <td><em>animation-name</em></td>
+                    <td>Հատկանշում է keyframe-ի անվանումը, որը պետք է կապված լինի սելեքթորի հետ:</td>
+                </tr>
+                                  <tr>
+                    <td><em>animation-play-state</em></td>
+                    <td>Հատկանշում է, արդյո՞ք անիմացիան պետք է սկսի, թե կանգնեցված լինի:</td>
+                </tr>
+                                  <tr>
+                    <td><em>animation-timing-function</em></td>
+                    <td>Հատկանշում է անիմացիայի կորության արագությունը:</td>
+                </tr>
+                                  <tr>
+                    <td>initial</td>
+                    <td>Վերագրում է այս հատկությունն իր նախնական արժեքին:</td>
+                </tr>
+                <tr>
+                    <td>inherit</td>
+                    <td>Ժառանգում է այս հատկությունն իր ծնող տարրից:</td>
+                </tr>
+          </tbody></table>
+    </div>
+    <div class="try-box">
+        <a href="animation-try.html">Փորձել</a>
+    </div>
 </div>

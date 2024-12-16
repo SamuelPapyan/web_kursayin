@@ -1,12 +1,57 @@
-<div class="property anim-direction">
-    <h2>animation-direction</h2>
-    <p>Սահմանում է անիմացիայի անցման ուղղությունը:</p>
-    <p>
-        <span class="property-name">animation-direction:</span>
-        <span class="property-values">normal | reverse | alternate | alternate-reverse</span>
-    </p>
-    <p><span class="property-values">normal</span> - նորմալ կադրերի հեռթականությունը</p>
-    <p><span class="property-values">reverse</span> - հակառակ կադրերի հեռթականություն</p>
-    <p><span class="property-values">alternate</span> - կենտ կրկնության դեպքում կադրերի հեռթականությանը նորմալ է, իսկ զույգի դեպքում՝ հակառակ</p>
-    <p><span class="property-values">alternate-reverse</span> - կենտ կրկնության դեպքում կադրերի հեռթականությանը հակառակ է, իսկ զույգի դեպքում՝ նորմալ</p>
+<div class="prop-flex-box">
+    <!htmpy tries/animation-direction-try !>
+    <div class="property">
+        <h2>animation-direction</h2>
+        <button class="prop-detail-toggle">
+            Մանրամասներ
+        </button>
+    </div>
+    <div class="prop-info">
+        <p>Հատկանշում է, արդյո՞ք անիմացիան պետք է խաղա հակառակ յուրաքանչյուր ցիկլում, թե ոչ:</p>
+    </div>
+    <div class="prop-example">
+        <pre>
+div {
+    -webkit-animation-direction: alternate; /* Chrome, Safari, Opera */
+    animation-direction: alternate;
+}
+        </pre>
+    </div>
+    <div class="prop-details" style="display: none;">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Արժեք</td>
+                    <td>Բնութագիր</td>
+                </tr>
+                <tr>
+                    <td>alternate</td>
+                    <td>Անիմացիան կխաղա նորմալ ամեն կենտ ժամանակահատվածում (1,3,5 և այլն...) և հակառակ ուղղությամբ՝ ամեն զույգ ժամանակահատվածում (2,4,6 և այլն...):</td>
+                </tr>
+                <tr>
+                    <td>alternate-reverse</td>
+                    <td>Անիմացիան կխաղա հակառակ ուղղությամբ ամեն կենտ ժամանակահատվածում (1,3,5 և այլն...) և նորմալ՝ ամեն զույգ ժամանակահատվածում (2,4,6 և այլն...):</td>
+                </tr>
+                <tr>
+                    <td>normal</td>
+                    <td>Անիմացիան կխաղա նորմալ:</td>
+                </tr>
+                                    <tr>
+                    <td>reverse</td>
+                    <td>Անիմացիան կխաղա հակառակ ուղղությամբ:</td>
+                </tr>
+                                    <tr>
+                    <td>initial</td>
+                    <td>Վերագրում է այս հատկությունն իր նախնական արժեքին:</td>
+                </tr>
+                <tr>
+                    <td>inherit</td>
+                    <td>Ժառանգում է այս հատկությունն իր ծնող տարրից:</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="try-box">
+        <a href="animation-direction-try.html">Փորձել</a>
+    </div>
 </div>

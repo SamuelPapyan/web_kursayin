@@ -7,43 +7,125 @@ html {
     scroll-behavior: smooth;
 }
 
+pre {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+body {
+    background-image: url(images/bg_texture_10.png);
+    background-attachment: fixed;
+    background-size: 33%;
+    /* background-image: url(images/bg_texture_7.png);
+    background-attachment: fixed;
+    background-size: 600px 360px; */
+    /* background-color: #6d0000; */
+    margin: 0;
+}
+
+.header-images {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.header-images img {
+    height: 90px;
+}
+
+.header-images .group-0 img {
+    width: 130px;
+    height: 130px;
+}
+
+/* .header-images .group-1 {
+    margin-left: 200px;
+} */
+
+.header-images h2 {
+    text-transform: uppercase;
+    margin: 8px 0;
+}
+
+.img-1 {
+    width: 140px;
+    height: 140px !important;
+}
+
+.img-2 {
+    width: 660px;
+}
+
+.css-logo {
+    width: 130px;
+    height: 130px !important;
+}
+
+.npua-img {
+    width: 100px;
+    height: 100px !important;
+}
+
+.npua-logo {
+    flex-basis: 10%;
+}
+
+.npua-logo img {
+    text-align: center;
+}
+
+.npua-logo p {
+    font-weight: bold;
+    margin: 0;
+    font-size: 1.5em;
+    text-align: left !important;
+    text-indent: 20px;
+}
+
+.web-img {
+    width: 100%;
+}
+
+#rotator {
+    position: absolute;
+    width: 15%;
+    top: 52px;
+    left: 140px;
+    animation: rotate 1s linear infinite;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -2s);
+}
+  
+@keyframes rotate {
+    to {
+        transform: scaleX(-1);
+    }
+}
+
+.border-rounded {
+    border-radius: 25px;
+}
+
 .header {
-    position:sticky;
-    top:0;
     background-color: orange;
     margin: 0;
-    padding: 10px;
+    padding: 15px 10px 0 10px;
+    height: 150px;
 }
 
 .footer {
     background-color: orange;
     padding: 10px;
-    margin-top: 10px;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 h1 {
     text-align: center;
     color: white;
 }
-
-.header .menu {
-    display:flex;
-    justify-content: space-evenly;
-    list-style: none;
-}
-
-.header .menu a{
-    text-decoration: none;
-    color: white;
-    font-size: 20px;
-    background-color: orange;
-    border: 1px solid white;
-    border-radius: 25px;
-    padding: 10px;
-    transition: padding 0.5s, color 0.5s;
-}
-
-
 
 .slide {
     background-color: orange;
@@ -67,9 +149,9 @@ h1 {
     clear: both;
 }
 
-.keyframes-definition {
+/* .keyframes-definition {
     width:50%;
-}
+} */
 
 .d-flex {
     display: flex;
@@ -95,6 +177,11 @@ h1 {
     margin: auto;
 }
 
+#videos .slide-content, #library .slide-content {
+    background-color: transparent;
+    border: none;
+}
+
 .slide-content {
     background-color: white;
     padding: 10px;
@@ -104,7 +191,7 @@ h1 {
 
 .container {
     width:90%;
-    margin:auto;
+    margin:10px auto;
 }
 
 .slide h2 {
@@ -113,13 +200,15 @@ h1 {
 }
 
 .slide-white {
-    background-color: white;
+    background-image: url(images/marble.jpg);
+    /* background-color: white; */
     padding: 10px;
 }
 
 .slide-white h2 {
     text-align: center;
-    color: orange;
+    color: darkred;
+    text-transform: uppercase;
 }
 
 .slide-white-content {
@@ -128,21 +217,57 @@ h1 {
     padding:10px;
 }
 
-#start img {
-    width:70%;
+.grow-shrink-1-1 {
+    animation-name: growShrink1_1;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.grow-shrink-1-3 {
+    animation-name: growShrink1_1;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+#intro img, .gif-box img {
+    width:60%;
+    height: 100px;
     display:block;
     margin: 10px auto;
     border-radius: 25px;
     border: 5px solid orange;
 }
 
-#start {
-    margin-bottom: 10px;
+@keyframes growShrink1_1 {
+    from {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    to {
+        transform: scale(1);
+    }
 }
 
-#start h1 {
+@keyframes growShrink1_3 {
+    from {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+#intro h1 {
     font-size: 48px;
     color: orange;
+    margin-bottom:0;
 }
 
 .footer p {
@@ -151,11 +276,20 @@ h1 {
     text-align: right;
 }
 
+.student-info p {
+    text-align: left;
+    margin: 10px 0;
+}
+
+.student-info {
+    margin-right: 45px;
+}
+
 .property h2 {
     font-size: 24px;
-    color: #a1a1a1;
+    color: blue;
     font-weight: bold;
-
+    cursor: pointer;
 }
 
 ::-webkit-scrollbar {
@@ -163,23 +297,52 @@ h1 {
     border-radius: 10px;
 }
 
+.prop-flex-box {
+    
+    border-top: 1px solid orange;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.prop-flex-box:last-of-type {
+    border-bottom: none;
+}
+
 .property {
     width: 30%;
-    height: 320px;
-    border: 1px solid orange;
     border-radius: 10px;
-    overflow-y: auto;
-    margin-bottom: 10px;
     padding: 10px;
 }
-.property::-webkit-scrollbar-track {
-    border-top: 1px solid orange;
-    border-bottom: 1px solid orange;
-    border-radius: 25px;
+
+.prop-info {
+    width: 20%;
 }
+
+.prop-example {
+    width: 30%;
+}
+
+.prop-details {
+    display: none;
+    width: 60%;
+    padding: 10px;
+    background-color: rgb(152, 181, 245);
+    border-radius: 25px;
+    margin: 10px 0;
+}
+
+.prop-details table {
+    width: 100%;
+}
+
+.property-height {
+    height: 320px;
+}
+
 ::-webkit-scrollbar-track{
     box-shadow: none;
-    background: white;
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb{
@@ -197,7 +360,7 @@ h1 {
 }
 
 .flex-3 {
-    width: 93%;
+    width: 95%;
 }
 
 .flex-2 {
@@ -210,68 +373,24 @@ h1 {
 }
 
 .property-values {
-    color: violet;
+    color: blue;
 }
 
 .property-list {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-}
-
-.example-flex {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.code-snippet, .preview {
-    width: 49%;
-    height: 300px;
-    border: 1px solid orange;
+    border:1px solid orange;
+    background-color: white;
     border-radius: 25px;
 }
 
-.code-snippet {
-    overflow: auto;
-}
-
-.example-sample h2 {
-    color: orange;
-}
-
-@keyframes myAnimation {
-    from {
-        background-color: red;
-    }
-
-    50% {
-        background-color: blue;
-        transform: scale(1.5);
-    }
-
-    to {
-        background-color: orange;
-    }
-}
-
-.testing-element {
-    width: 100px;
-    height: 100px;
-    background-color: red;
-    border-radius: 50%;
-    margin: 70px auto;
-}
-
-.testing-element:hover {
-    animation-name: myAnimation;
-    animation-duration: 3s;
-}
-/* kursayin.html */
 .sidebar {
     display:inline-block;
     width: 300px;
     background-color: orange;
-    padding: 10px;
+    padding: 10px 10px 10px 10px;
     height: 100vh;
     position: sticky;
     top: 0;
@@ -289,7 +408,7 @@ h1 {
 .sidebar .menu a{
     text-decoration: none;
     color: white;
-    font-size: 20px;
+    font-size: 16px;
     background-color: orange;
     border: 1px solid white;
     border-radius: 25px;
@@ -312,10 +431,8 @@ h1 {
 
 .kurs-container {
     display: flex;
-}
-
-.test {
-    
+    padding: 0;
+    margin: 0;
 }
 
 .question {
@@ -366,4 +483,556 @@ h1 {
 
 .italic {
     font-style: italic;
+}
+
+.library-items {
+    display: flex;
+    justify-content: space-between;
+}
+
+.library-item {
+    border: 1px solid orange;
+    border-radius: 20px;
+    padding:10px;
+    width:30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+}
+
+.library-item a {
+    text-decoration: none;
+    color: blue;
+}
+
+.library-item a:visited {
+    color: blue
+}
+
+.library-item p {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#videos iframe {
+    width: 100%;
+    height: 300px;
+    background-color: white;
+}
+
+.video-description {
+    height: 150px;
+    padding: 10px;
+    overflow: auto;
+    background-color: white;
+    border-radius: 0 0 20px 20px;
+    margin-bottom: 30px;
+}
+
+.magenta {
+    color: blue;
+}
+.library-item img {
+    width: 100%;
+    height: 450px;
+}
+
+.links {
+    list-style: none;
+    padding: 0;
+}
+
+.links a{
+    color: white;
+    text-decoration: none;
+}
+
+.links li {
+    margin: 2px;
+}
+
+.flex-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.grow-shrink-img-box {
+    width: 48%;
+}
+
+.introduction {
+    width: 48%;
+}
+
+#intro .slide-content {
+    border: 1px solid orange;
+    background-color: white;
+}
+
+.overflowed {
+    border-radius: 25px 0 0 25px;
+}
+
+#videos .slide-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.video-content {
+    width: 48%;
+}
+
+.copy {
+    display: flex;
+    height: inherit;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.title-name {
+    display: block;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+    color: orange;
+}
+
+.title-box {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.title-text , .gif-box {
+    width: 48%;
+}
+
+.test-message {
+    color: white;
+    background-color: orange;
+    padding:5px;
+    width: 100%;
+    font-size: 16px;
+    font-style: italic;
+    text-indent: 25px;
+    transition-property: visibility;
+    transition-duration: 200ms;
+    display: none;
+}
+
+.try-box {
+    align-self: center;
+}
+
+.try-box a {
+    text-decoration: none;
+    padding: 5px;
+    display: block;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    background-color: white;
+    border: 1px solid blue;
+    color: blue;
+    border-radius: 10px;
+    transition-duration: 200ms;
+}
+
+.try-box a:hover {
+    background-color: blue;
+    color: white;
+    padding: 10px 5px;
+}
+
+.prop-detail-toggle {
+    color: blue;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    margin: 0 100px;
+    background-color: white;
+    border: 1px solid blue;
+    padding: 5px;
+    transition-duration: 200ms;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.prop-detail-toggle:hover {
+    background-color: blue;
+    color: white;
+    padding: 10px 5px;
+}
+
+.prop-headers {
+    align-items: center;
+}
+
+.prop-header {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    color: orange;
+}
+
+.trial-box {
+    position: fixed;
+    width: 70vw;
+    height: 80vh;
+    top:10vh;
+    left: 20vw;
+    z-index: 10;
+    background-color: white;
+    border: 5px solid blue;
+    border-radius: 25px;
+    padding: 10px;
+}
+
+#trial-blur {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9;
+    background-color: black;
+    opacity: 0.7;
+    top: 0;
+    left: 0;
+}
+
+.trial-container {
+    display: flex;
+    justify-content: space-evenly;
+    height: 80%;
+}
+
+.trial-label {
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    color: blue;
+}
+
+.demo-preview, .code-preview {
+    width: 48%;
+    height: 100%;
+}
+
+.code-preview textarea {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    padding: 10px;
+}
+
+.code-preview textarea:disabled {
+    background-color: white;
+    color: black;
+}
+
+.trial-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.trial-heading {
+    color: blue;
+    font-weight: bold;
+    font-size: 2em;
+    margin:5px;
+}
+
+.close-button {
+    font-weight: bold;
+    color: blue;
+    border: 1px solid blue;
+    background-color: white;
+    padding: 5px;
+    align-self: center;
+    cursor: pointer;
+    transition-duration: 200ms;
+}
+
+.close-button:hover {
+    padding: 10px;
+    color: white;
+    background-color: blue;
+}
+
+.demo-preview {
+    border: 1px solid;
+    background-color: white;
+    padding: 5px;
+}
+
+.demo-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.demo-box {
+    width: 100px;
+    height: 100px;
+    background: orangered;
+    position :relative;
+}
+
+#animation-demo .demo-box {
+    animation: mymove 5s infinite;
+    /* Chrome, Safari, Opera */ 
+    -webkit-animation: animation-demo-kf 5s infinite;
+}
+
+#animation-name-demo .demo-box  {
+    animation-name: animation-name-demo-kf;
+    animation-duration: 5s;
+    /* Chrome, Safari, Opera */
+    -webkit-animation-name: animation-name-demo-kf;  
+    -webkit-animation-duration: 5s;
+}
+
+#animation-delay-demo .demo-box  {
+    animation: animation-delay-demo-kf 5s infinite;
+    animation-delay: 2s;
+    /* Chrome, Safari, Opera */
+    -webkit-animation: animation-delay-demo-kf 5s infinite;
+    -webkit-animation-delay: 2s;
+}
+
+#animation-direction-demo .demo-box {
+    animation: animation-direction-demo-kf 5s infinite;
+    animation-direction: alternate;
+    /* Chrome, Safari, Opera */
+    -webkit-animation: animation-direction-demo-kf 5s infinite;
+    -webkit-animation-direction: alternate;
+}
+
+#animation-duration-demo .demo-box {
+    animation: animation-duration-demo-kf infinite;
+    animation-duration: 2s;
+    /* Chrome, Safari, Opera */
+    -webkit-animation: animation-duration-demo-kf infinite; 
+    -webkit-animation-duration: 2s;
+}
+
+#animation-fill-mode-demo .demo-box {
+    animation: animation-fill-mode-demo-kf 3s;
+    animation-iteration-count: 2;
+    animation-fill-mode: forwards;
+    /* Chrome, Safari, Opera */
+    -webkit-animation: animation-fill-mode-demo-kf 3s;
+    -webkit-animation-iteration-count: 2;
+    -webkit-animation-fill-mode: forwards;
+}
+
+#animation-iteration-count-demo .demo-box {
+    animation: animation-iteration-count-demo-kf 3s;
+    animation-iteration-count: 3;
+    animation-fill-mode: forwards;
+    /* Chrome, Safari, Opera */
+    -webkit-animation: animation-iteration-count-demo-kf 3s;
+    -webkit-animation-iteration-count: 2;
+    -webkit-animation-iteration-count: 3;
+}
+
+#animation-play-state-demo .demo-box {
+    animation: animation-play-state-count-demo-kf 5s;
+    animation-play-state: paused;
+    /* Chrome, Safari, Opera */
+    -webkit-animation: animation-play-state-count-demo-kf 5s;
+    -webkit-animation-play-state: paused;
+}
+
+#animation-timing-function-demo .demo-box {
+    animation: animation-timing-function-demo-kf 5s infinite;
+    animation-timing-function: linear;
+    /* Chrome, Safari, Opera */
+    -webkit-animation: animation-timing-function-demo-kf 5s infinite;
+    -webkit-animation-timing-function: linear;
+}
+
+@keyframes animation-demo-kf {
+    0%   {top: 0px;}
+    25%  {top: 200px;}
+    75%  {top: 50px}
+    100% {top: 100px;}
+}
+/* Chrome, Safari, Opera */ 
+@-webkit-keyframes animation-demo-kf {
+    0%   {top: 0px;}
+    25%  {top: 200px;}
+    75%  {top: 50px}
+    100% {top: 100px;}
+}
+
+@keyframes animation-name-demo-kf {
+    from {left: 0px;}
+    to {left: 200px;}
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes animation-name-demo-kf {
+    from {left: 0px;}
+    to {left: 200px;}
+}
+
+@keyframes animation-delay-demo-kf {
+    from {left: 0px;}
+    to {left: 200px;}
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes animation-delay-demo-kf {
+    from {left: 0px;}
+    to {left: 200px;}
+}
+
+@keyframes animation-direction-demo-kf {
+    0%   {background: red; left: 0px; top: 0px;}
+    25%  {background: yellow; left: 200px; top: 0px;}
+    50%  {background: blue; left: 200px; top: 200px;}
+    75%  {background: green; left: 0px; top: 200px;}
+    100% {background: red; left: 0px; top: 0px;}
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes animation-direction-demo-kf {
+    0%   {background: red; left: 0px; top: 0px;}
+    25%  {background: yellow; left: 200px; top: 0px;}
+    50%  {background: blue; left: 200px; top: 200px;}
+    75%  {background: green; left: 0px; top: 200px;}
+    100% {background: red; left: 0px; top: 0px;}
+}
+
+@keyframes animation-duration-demo-kf {
+    from {top: 0px;}
+    to {top: 200px;}
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes animation-duration-demo-kf {
+    from {top: 0px;}
+    to {top: 200px;}
+}
+
+@keyframes animation-fill-mode-demo-kf  {
+    from {top: 0px;}
+    to {top: 200px;}
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes animation-fill-mode-demo-kf {
+    from {top: 0px;}
+    to {top: 200px;}
+}
+
+@keyframes animation-iteration-count-demo-kf {
+    from {top: 0px;}
+    to {top: 200px;}
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes animation-iteration-count-demo-kf {
+    from {top: 0px;}
+    to {top: 200px;}
+}
+
+@keyframes animation-play-state-demo-kf {
+    from {left: 0px;}
+    to {left: 200px;}
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes animation-play-state-demo-kf {
+    from {left: 0px;}
+    to {left: 200px;}
+}
+
+@keyframes animation-timing-function-demo-kf {
+    from {left: 0px;}
+    to {left: 200px;}
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes animation-timing-function-demo-kf {
+    from {left: 0px;}
+    to {left: 200px;}
+}
+
+.animation-examples {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.loader-examples {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.loader-examples img {
+    width: 31.5%;
+    height: 300px;
+    display: block;
+    margin-bottom: 10px;
+    border: 3px solid orange;
+    border-radius: 10px;
+}
+
+.animation-examples img {
+    width : 48%;
+    height: 300px;
+    display: block;
+    margin-bottom: 10px;
+    border: 3px solid orange;
+    border-radius: 10px;
+}
+
+.seo-conclusion {
+    width: 90%;
+    border: 1px solid;
+    box-shadow: 5px 5px 15px #a1a1a1;
+    padding: 10px;
+}
+
+.seo-conclusion li {
+    margin-bottom: 5px;
+}
+
+.comment {
+    display: block;
+    font-style: italic;
+    color: green;
+}
+
+.properties-p {
+    margin: 0;
+}
+
+#intro p, #intro ul li, #features p, #features li, .properties-p, #keyframes p, #libraries p,
+#examples p {
+    font-size: 20px;
+    text-align: left;
+}
+
+ul {
+    list-style-type: square;
+    list-style-position: inside;
+}
+
+.properties-p {
+    margin-bottom: 20px;
+}
+
+ul li::marker {
+    font-size: 1.2em;
+}
+
+.library-heading {
+    display: block;
+    font-size: 24px;
+    color: red;
+    font-weight: bold;
 }

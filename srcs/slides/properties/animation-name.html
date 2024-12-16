@@ -1,8 +1,49 @@
-<div class="property anim-name">
-    <h2>animation-name</h2>
-    <p>Ստանում է սահմանված բանալինային կադրերի (keyframes) անունը, որը կարգավորում է անիմացիայի կադրերը։</p>
-    <p>
-        <span class="property-name">animation-name:</span>
-        <span class="property-values">անիմացիայի_անոն</span>
-    </p>
+<div class="prop-flex-box">
+    <!htmpy tries/animation-name-try !>
+    <div class="property">
+        <h2>animation-name</h2>
+        <button class="prop-detail-toggle">
+            Մանրամասներ
+        </button>
+    </div>
+    <div class="prop-info">
+        <p>Հատկանշում է անվանում @keyframes անիմացիայի համար:</p>
+    </div>
+    <div class="prop-example">
+        <pre>
+div {
+    -webkit-animation-name: mymove; /* Chrome, Safari, Opera */
+    animation-name: mymove;
+}
+        </pre>
+    </div>
+    <div class="prop-details" style="display: none;">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Արժեք</td>
+                    <td>Բնութագիր</td>
+                </tr>
+                <tr>
+                    <td><em>keyframename</em></td>
+                    <td>Հատկանշում է keyframe-ի անվանումը, որը պետք է կապված լինի սելեքթորի հետ:</td>
+                </tr>
+                <tr>
+                    <td>none</td>
+                    <td>Հատկանշում է, որ անիմացիա չի լինելու (կարող է օգտագործվել կասկադից եկող անիմացիաները փոփոխելու համար):</td>
+                </tr>
+                <tr>
+                    <td>initial</td>
+                    <td>Վերագրում է այս հատկությունն իր նախնական արժեքին:</td>
+                </tr>
+                <tr>
+                    <td>inherit</td>
+                    <td>Ժառանգում է այս հատկությունն իր ծնող տարրից:</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="try-box">
+        <a href="animation-name-try.html">Փորձել</a>
+    </div>
 </div>

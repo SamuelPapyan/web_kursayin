@@ -1,0 +1,53 @@
+<div class="trial-box" style="display: none;">
+    <div class="trial-header">
+        <p class="trial-heading">animation-iteration-count</p>
+        <button class="close-button">
+            X
+        </button>
+    </div>
+    <div class="trial-container">
+        <div class="code-preview">
+            <textarea disabled>
+&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;title&gt;Էջի վերնագիր&lt;/title&gt;
+        &lt;style&gt; 
+            div {
+                width: 100px;
+                height: 100px;
+                background: red;
+                position: relative;
+                animation: mymove 3s;
+                animation-iteration-count: 3;
+                /* Chrome, Safari, Opera */
+                -webkit-animation: mymove 3s;  
+                -webkit-animation-iteration-count: 3;
+            }
+            @keyframes mymove {
+                from {top: 0px;}
+                to {top: 200px;}
+            }
+            /* Chrome, Safari, Opera */
+            @-webkit-keyframes mymove {
+                from {top: 0px;}
+                to {top: 200px;}
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div&gt;&lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </textarea>
+            <p class="trial-label">Կոդ</p>
+        </div>
+        <div id="animation-iteration-count-demo" class="demo-preview">
+            <div class="demo-canvas">
+                <div class="demo-box"></div>
+            </div>
+            <p class="trial-label">Արդյունք</p>
+        </div>
+    </div>
+</div>

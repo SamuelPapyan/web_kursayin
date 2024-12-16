@@ -1,0 +1,53 @@
+<div class="trial-box" style="display: none;">
+    <div class="trial-header">
+        <p class="trial-heading">animation-timing-function</p>
+        <button class="close-button">
+            X
+        </button>
+    </div>
+    <div class="trial-container">
+        <div class="code-preview">
+            <textarea disabled>
+&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;title&gt;Էջի վերնագիր&lt;/title&gt;
+        &lt;style&gt; 
+            div {
+                width: 100px;
+                height: 100px;
+                background: red;
+                position: relative;
+                animation: mymove 5s infinite;
+                animation-timing-function: linear;
+                /* Chrome, Safari, Opera */
+                -webkit-animation: mymove 5s infinite;
+                -webkit-animation-timing-function: linear;
+            }
+            @keyframes mymove {
+                from {left: 0px;}
+                to {left: 200px;}
+            }
+            /* Chrome, Safari, Opera */
+            @-webkit-keyframes mymove {
+                from {left: 0px;}
+                to {left: 200px;}
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div&gt;&lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </textarea>
+            <p class="trial-label">Կոդ</p>
+        </div>
+        <div id="animation-timing-function-demo" class="demo-preview">
+            <div class="demo-canvas">
+                <div class="demo-box"></div>
+            </div>
+            <p class="trial-label">Արդյունք</p>
+        </div>
+    </div>
+</div>
