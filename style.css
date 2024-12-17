@@ -127,12 +127,6 @@ h1 {
     color: white;
 }
 
-.slide {
-    background-color: orange;
-    padding: 10px;
-    padding-top:100px;
-}
-
 .slide p, .slide ul li{
     font-size: 20px;
 }
@@ -201,8 +195,7 @@ h1 {
 
 .slide-white {
     background-image: url(images/marble.jpg);
-    /* background-color: white; */
-    padding: 10px;
+    padding: 0 10px 10px 10px;
 }
 
 .slide-white h2 {
@@ -469,7 +462,7 @@ h1 {
 #seo video {
     width: 80%;
     display: inline-block;
-    
+    border: 3px solid orange;
 }
 
 #seo p{
@@ -522,6 +515,10 @@ h1 {
     background-color: white;
 }
 
+#seo video {
+    width: 100%;
+}
+
 .video-description {
     height: 150px;
     padding: 10px;
@@ -556,6 +553,7 @@ h1 {
 .flex-group {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .grow-shrink-img-box {
@@ -564,11 +562,6 @@ h1 {
 
 .introduction {
     width: 48%;
-}
-
-#intro .slide-content {
-    border: 1px solid orange;
-    background-color: white;
 }
 
 .overflowed {
@@ -712,8 +705,8 @@ h1 {
 }
 
 .trial-label {
-    font-size: 24px;
-    text-align: center;
+    font-size: 24px !important;
+    text-align: center !important;
     font-weight: bold;
     font-style: italic;
     color: blue;
@@ -746,7 +739,7 @@ h1 {
 .trial-heading {
     color: blue;
     font-weight: bold;
-    font-size: 2em;
+    font-size: 2em !important;
     margin:5px;
 }
 
@@ -857,6 +850,12 @@ h1 {
     /* Chrome, Safari, Opera */
     -webkit-animation: animation-timing-function-demo-kf 5s infinite;
     -webkit-animation-timing-function: linear;
+}
+
+#keyframes-demo .demo-box {
+    animation: mymove 5s infinite;
+    /* Chrome, Safari, Opera */ 
+    -webkit-animation: animation-demo-kf 5s infinite;
 }
 
 @keyframes animation-demo-kf {
@@ -995,6 +994,8 @@ h1 {
     border: 1px solid;
     box-shadow: 5px 5px 15px #a1a1a1;
     padding: 10px;
+    margin:auto;
+    margin-bottom: 10px;
 }
 
 .seo-conclusion li {
@@ -1017,6 +1018,11 @@ h1 {
     text-align: left;
 }
 
+#intro p, #examples p, #features p, #features li, .properties-p, #keyframes p, #libraries p,
+#examples p {
+    padding: 0 20px;
+}
+
 ul {
     list-style-type: square;
     list-style-position: inside;
@@ -1032,6 +1038,7 @@ ul li::marker {
 
 .library-heading {
     display: block;
+    padding: 0 20px;
     font-size: 24px;
     color: red;
     font-weight: bold;

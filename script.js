@@ -49,7 +49,7 @@ function getRandomNum(max, min = 0) {
 const closeButtons = [...document.querySelectorAll('.close-button')];
 const tryButtons = [...document.querySelectorAll('.try-box a')]
 const trialBlur = document.getElementById('trial-blur');
-
+tryButtons.push(document.getElementById('keyframe-toggle'));
 
 const questions = document.querySelectorAll('.test');
 // console.log(questions);
@@ -104,7 +104,11 @@ propertyToggles.forEach(elem=>{
 
 function openTrialModal(event) {
     event.preventDefault();
-    const parent = event.target.parentNode.parentNode;
+    let parent = null;
+    if (event.target.id == 'keyframe-toggle')
+        parent = event.target.parentNode
+    else
+        parent = event.target.parentNode.parentNode;
     const trialModal = parent.querySelector('.trial-box');
     trialModal.style.display = 'block';
     trialBlur.style.display = 'block';
