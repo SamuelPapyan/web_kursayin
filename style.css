@@ -40,11 +40,9 @@ body {
     height: 130px;
 }
 
-/* .header-images .group-1 {
-    margin-left: 200px;
-} */
-
-.header-images h2 {
+.header-images p {
+    font-size: 1.5em;
+    font-weight: bold;
     text-transform: uppercase;
     margin: 8px 0;
 }
@@ -460,8 +458,9 @@ h1 {
 }
 
 #seo video {
-    width: 80%;
-    display: inline-block;
+    width: 50%;
+    display: block;
+    margin: auto;
     border: 3px solid orange;
 }
 
@@ -566,6 +565,7 @@ h1 {
 
 .overflowed {
     border-radius: 25px 0 0 25px;
+    overflow: auto;
 }
 
 #videos .slide-content {
@@ -1013,14 +1013,19 @@ h1 {
 }
 
 #intro p, #intro ul li, #features p, #features li, .properties-p, #keyframes p, #libraries p,
-#examples p {
+#examples p, #examples ul li {
     font-size: 20px;
     text-align: left;
 }
 
 #intro p, #examples p, #features p, #features li, .properties-p, #keyframes p, #libraries p,
-#examples p {
+#examples p, #seo p {
     padding: 0 20px;
+}
+
+#examples strong {
+    color: blue;
+    font-size: 2em;
 }
 
 ul {
@@ -1042,4 +1047,47 @@ ul li::marker {
     font-size: 24px;
     color: red;
     font-weight: bold;
+}
+
+.center {
+    text-align: center;
+}
+
+.keyword-usage-box {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.keyword-usage-box h3 {
+    text-align: center;
+    color: blue;
+    text-transform: uppercase;
+}
+
+.usage-in-webpage, .html-fragments {
+    width: 48%;
+}
+
+.usage-in-webpage img, .html-fragments img {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 3px solid orange;
+    border-radius: 10px;
+}
+
+#keyframes ul li{
+    font-size: 20px;
+}
+
+#keyframes img {
+    display: block;
+    margin: auto;
+}
+
+.little-example {
+    margin: 10px 0 0 35%;
+}
+
+#keyframe-description {
+    height: 300px;
 }

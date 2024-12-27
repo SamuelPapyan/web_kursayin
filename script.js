@@ -105,10 +105,7 @@ propertyToggles.forEach(elem=>{
 function openTrialModal(event) {
     event.preventDefault();
     let parent = null;
-    if (event.target.id == 'keyframe-toggle')
-        parent = event.target.parentNode
-    else
-        parent = event.target.parentNode.parentNode;
+    parent = event.target.parentNode.parentNode;
     const trialModal = parent.querySelector('.trial-box');
     trialModal.style.display = 'block';
     trialBlur.style.display = 'block';
