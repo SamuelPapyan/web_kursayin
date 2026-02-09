@@ -9,7 +9,13 @@ const exampleSchema = new Schema<IExample>({
     code: {
         type: String,
         required: true
+    },
+    isPublished: {
+        type: Boolean,
+        default: false
     }
+}, {
+    timestamps: true
 })
 
 export const Example = model('Example', exampleSchema)

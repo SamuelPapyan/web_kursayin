@@ -6,15 +6,29 @@ const videoSchema = new Schema<IVideo>({
         type: String,
         required: true
     },
-    url: {
+    videoUrl: {
         type: String,
-        required: true
+        required: false,
+        default: null
+    },
+    youtubeId: {
+        type: String,
+        required: false,
+        default: null
     },
     details: {
-        type: [Schema.Types.ObjectId],
-        ref: 'VideoDetails',
+        type: [{
+            time: String,
+            content: String
+        }],
         required: true
+    },
+    isPublished: {
+        type: Boolean,
+        default: false
     }
+}, {
+    timestamps: true
 })
 
 export const Video = model('Video', videoSchema)
