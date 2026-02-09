@@ -1,8 +1,11 @@
 import { Types } from "mongoose";
+import { IVideoDetails } from "./video-details.interface";
 
 export interface IVideo {
     _id?: Types.ObjectId;
     title: string;
-    url: string;
-    details: Types.ObjectId[];
+    videoUrl?: string;
+    youtubeId?: string;
+    details: IVideoDetails[];
+    isPublished?: boolean;
 }

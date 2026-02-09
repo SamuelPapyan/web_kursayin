@@ -8,12 +8,18 @@ const bookSchema = new Schema<IBook>({
     },
     cover: {
         type: String,
-        require: true
+        default: null
     },
     link: {
         type: String,
         require: true
+    },
+    isPublished: {
+        type: Boolean,
+        default: false
     }
+}, {
+    timestamps: true
 })
 
 export const Book = model('Book', bookSchema)

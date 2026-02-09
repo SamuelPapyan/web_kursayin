@@ -7,19 +7,23 @@ const testSchema = new Schema<ITest>({
         required: true
     },
     variants: {
-        type: [Schema.Types.ObjectId],
-        ref: 'TestVariant',
+        type: [String],
         required: true
     },
     answer: {
-        type: Schema.Types.ObjectId,
-        ref: 'TestVariant',
+        type: Number,
         required: true
     },
     themeLink: {
         type: String,
         required: true
+    },
+    isPublished: {
+        type: Boolean,
+        default: false
     }
+}, {
+    timestamps: true
 })
 
 export const Test = model('Test', testSchema)
