@@ -26,8 +26,7 @@ class CloudinaryService {
             })
             return data.url;
         } catch (error) {
-            console.log("Upload Error: ", error.message);
-            return null;
+            throw error
         }
     }
 
@@ -37,8 +36,7 @@ class CloudinaryService {
             const data = await cloudinary.uploader.destroy(publicId)
             return data;
         } catch (error) {
-            console.log("File Remove Error: ", error.message);
-            return null;
+            throw error
         }
     }
 }

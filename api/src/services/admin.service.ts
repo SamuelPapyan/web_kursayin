@@ -10,6 +10,9 @@ import { ITest } from "../interfaces/test.interface";
 import cloudinaryService from "./cloudinary.service";
 import { FileType } from "../enums/file-type.enum";
 import { Visibility } from "../enums/visibility.enum";
+import { ValidationException } from "../exceptions/validation.exception";
+import { NotFoundException } from "../exceptions/not-found.exception";
+import { ResourceType } from "../enums/resource-type.enum";
 
 class AdminService {
     async getExamples() {
@@ -17,7 +20,9 @@ class AdminService {
     }
 
     async getExampleById(id: Types.ObjectId) {
-        return await Example.findById(id)
+        const data = await Example.findById(id)
+        if (!data) throw new NotFoundException(ResourceType.EXAMPLE, id)
+        return data;
     }
 
     async createExample(example: IExample) {
@@ -25,16 +30,22 @@ class AdminService {
     }
 
     async updateExample(id: Types.ObjectId, example: IExample) {
-        return await Example.findByIdAndUpdate(id, example)
+        const data = await Example.findByIdAndUpdate(id, example)
+        if (!data) throw new NotFoundException(ResourceType.EXAMPLE, id)
+        return data;
     }
 
     async deleteExample(id: Types.ObjectId) {
-        return await Example.findByIdAndDelete(id)
+        const data = await Example.findByIdAndDelete(id);
+        if (!data) throw new NotFoundException(ResourceType.EXAMPLE, id)
+        return data;
     }
 
     async switchExampleVisibility(id: Types.ObjectId, visibility: Visibility) {
         const isPublished = visibility === Visibility.PUBLISH
-        return await Example.findByIdAndUpdate(id, { isPublished })
+        const data = await Example.findByIdAndUpdate(id, { isPublished })
+        if (!data) throw new NotFoundException(ResourceType.EXAMPLE, id)
+        return data;
     }
 
     async getTests() {
@@ -42,7 +53,9 @@ class AdminService {
     }
 
     async getTestById(id: Types.ObjectId) {
-        return await Test.findById(id)
+        const data =  await Test.findById(id)
+        if (!data) throw new NotFoundException(ResourceType.TEST, id)
+        return data;
     }
 
     async createTest(test: ITest) {
@@ -52,16 +65,22 @@ class AdminService {
 
     async updateTest(id: Types.ObjectId, test: ITest) {
         const { title, themeLink, variants, answer } = test;
-        return await Test.findByIdAndUpdate(id, {title, variants, answer, themeLink})
+        const data =  await Test.findByIdAndUpdate(id, {title, variants, answer, themeLink})
+        if (!data) throw new NotFoundException(ResourceType.TEST, id)
+        return data;
     }
 
     async deleteTest(id: Types.ObjectId) {
-        return await Test.findByIdAndDelete(id)
+        const data = await Test.findByIdAndDelete(id)
+        if (!data) throw new NotFoundException(ResourceType.TEST, id)
+        return data;
     }
 
     async switchTestVisibility(id: Types.ObjectId, visibility: Visibility) {
         const isPublished = visibility === Visibility.PUBLISH
-        return await Test.findByIdAndUpdate(id, { isPublished })
+        const data = await Test.findByIdAndUpdate(id, { isPublished })
+        if (!data) throw new NotFoundException(ResourceType.TEST, id)
+        return data;
     }
 
     async getVideos() {
@@ -69,12 +88,19 @@ class AdminService {
     }
 
     async getVideoById(id: Types.ObjectId) {
-        return await Video.findById(id)
+        const data = await Video.findById(id)
+        if (!data) throw new NotFoundException(ResourceType.VIDEO, id)
+        return data;
     }
 
     async createVideo(video: IVideo, file: string) {
         const { title, youtubeId, details } = video;
         let videoUrl = null;
+        if (!file && !youtubeId)
+            throw new ValidationException([
+                { property: 'videoFile', message: "Video file is required if you don't use YouTube video" },
+                { property: 'youtubeId', message: "YouTube video link is required if you don't use video file" },
+            ])
         if (file) 
             videoUrl = await cloudinaryService.uploadFile(file, Date.now().toString(), FileType.VIDEO, 'css_animation/video_files')
         return await Video.create({
@@ -88,6 +114,7 @@ class AdminService {
     async updateVideo(id: Types.ObjectId, video: IVideo, file: string) {
         const {title, youtubeId, details} = video;
         let videoUrl = null;
+        if (!(await Video.findById(id))) throw new NotFoundException(ResourceType.VIDEO, id)
         if (file) {
             const tmp = await Video.findById(id);
             await cloudinaryService.removeFile(tmp.videoUrl)
@@ -103,6 +130,7 @@ class AdminService {
 
     async deleteVideo(id: Types.ObjectId) {
         const tmp = await Video.findByIdAndDelete(id)
+        if (!tmp) throw new NotFoundException(ResourceType.VIDEO, id)
         if (tmp.videoUrl)
             await cloudinaryService.removeFile(tmp.videoUrl);
         return tmp
@@ -110,7 +138,9 @@ class AdminService {
 
     async switchVideoVisibility(id: Types.ObjectId, visibility: Visibility) {
         const isPublished = visibility === Visibility.PUBLISH
-        return await Video.findByIdAndUpdate(id, { isPublished })
+        const data = await Video.findByIdAndUpdate(id, { isPublished })
+        if (!data) throw new NotFoundException(ResourceType.VIDEO, id)
+        return data;
     }
 
     async getBooks() {
@@ -118,7 +148,9 @@ class AdminService {
     }
 
     async getBookById(id: Types.ObjectId) {
-        return await Book.findById(id)
+        const data = await Book.findById(id)
+        if (!data) throw new NotFoundException(ResourceType.BOOK, id)
+        return data;
     }
 
     async createBook(book: IBook, file: string) {
@@ -128,6 +160,8 @@ class AdminService {
     }
 
     async updateBook(id: Types.ObjectId, book: IBook, file: string) {
+        if (!(await Book.findById(id)))
+            throw new NotFoundException(ResourceType.BOOK, id)
         if (file) {
             const theBook = await Book.findById(id);
             await cloudinaryService.removeFile(theBook.cover);
@@ -139,6 +173,7 @@ class AdminService {
 
     async deleteBook(id: Types.ObjectId) {
         const tmp = await Book.findByIdAndDelete(id);
+        if (!tmp) throw new NotFoundException(ResourceType.BOOK, id)
         if (tmp.cover)
             await cloudinaryService.removeFile(tmp.cover);
         return tmp
@@ -146,7 +181,9 @@ class AdminService {
 
     async switchBookVisibility(id: Types.ObjectId, visibility: Visibility) {
         const isPublished = visibility === Visibility.PUBLISH
-        return await Book.findByIdAndUpdate(id, { isPublished })
+        const data = await Book.findByIdAndUpdate(id, { isPublished })
+        if (!data) throw new NotFoundException(ResourceType.BOOK, id)
+        return data;
     }
 }
 
