@@ -6,8 +6,79 @@ import { Visibility } from '../enums/visibility.enum'
 import { responseStatus } from '../enums/response.enum'
 import responseService from '../services/response.service'
 import { ResponseMessage } from '../enums/response-message.enum'
+import { IAdmin } from '../interfaces/admin.interface'
 
 class AdminController {
+    async login(req: Request, res: Response, next: NextFunction) {
+        try {
+            const { username, password } = req.body as unknown as IAdmin
+            const examples = await adminService.login({ username, password })
+            res.status(responseStatus.OK).send(responseService.createResponse(true, examples, ResponseMessage.ADMIN_LOGIN))
+        } catch (error) {
+            next(error)
+        }
+    }
+    
+    async getProfile(req: Request, res: Response, next: NextFunction) {
+        try {
+            const { user } = req;
+            const examples = await adminService.getProfile(user)
+            res.status(responseStatus.OK).send(responseService.createResponse(true, examples, ResponseMessage.ADMIN_PROFILE))
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getAdmins(req: Request, res: Response, next: NextFunction) {
+        try {
+            const examples = await adminService.getAdmins()
+            res.status(responseStatus.OK).send(responseService.createResponse(true, examples, ResponseMessage.ADMIN_GET))
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getAdminById(req: Request, res: Response, next: NextFunction) {
+        try {
+            const { id } = req.params
+            const example = await adminService.getAdminById(new Types.ObjectId(id))
+            res.status(responseStatus.OK).send(responseService.createResponse(true, example, ResponseMessage.ADMIN_GET_ID))
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async createAdmin(req: Request, res: Response, next: NextFunction) {
+        try {
+            const { body } = req;
+            const example = await adminService.createAdmin(body)
+            res.status(responseStatus.OK).send(responseService.createResponse(true, example, ResponseMessage.ADMIN_POST))
+        } catch (error) {
+            next(error)
+        }
+    }
+    
+    async updateAdmin(req: Request, res: Response, next: NextFunction) {
+        try {
+            const { id } = req.params;
+            const { body } = req;
+            const example = await adminService.updateAdmin(new Types.ObjectId(id), body)
+            res.status(responseStatus.OK).send(responseService.createResponse(true, example, ResponseMessage.ADMIN_PATCH))
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async deleteAdmin(req: Request, res: Response, next: NextFunction) {
+        try {
+            const { id } = req.params;
+            const example = await adminService.deleteAdmin(new Types.ObjectId(id))
+            res.status(responseStatus.OK).send(responseService.createResponse(true, example, ResponseMessage.ADMIN_DELETE))
+        } catch (error) {
+            next(error)
+        }
+    }
+
     async getExamples(req: Request, res: Response, next: NextFunction) {
         try {
             const examples = await adminService.getExamples()
