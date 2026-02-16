@@ -16,10 +16,10 @@ const app = express()
 app.use(cors())
 // Using JSON body parser
 app.use(json())
-// Using error handling middleware
-app.use(errorHandlingMiddleware)
 // Using main api router
 app.use('/api/v1', router)
+// Using error handling middleware
+app.use(errorHandlingMiddleware)
 
 // Configuring Cloudinary
 cloudinaryService.setupCloudinary()

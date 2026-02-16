@@ -3,3 +3,8 @@ export enum FileType {
     VIDEO = 'video',
     RAW = 'raw'
 }
+
+export enum MimeType {
+    IMAGE = 'image',
+    VIDEO = 'video'
+}
