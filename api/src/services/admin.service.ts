@@ -13,8 +13,57 @@ import { Visibility } from "../enums/visibility.enum";
 import { ValidationException } from "../exceptions/validation.exception";
 import { NotFoundException } from "../exceptions/not-found.exception";
 import { ResourceType } from "../enums/resource-type.enum";
+import { ILogin, UserPayload } from "../interfaces/user-payload.interface";
+import { Admin } from "../models/admin.model";
+import { UnauthorizedException } from "../exceptions/unauthorized.exception";
+import bcrypt from "bcrypt"
+import authService from "./auth.service";
+import { IAdmin } from "../interfaces/admin.interface";
 
 class AdminService {
+    async login(loginDto: ILogin) {
+        const { username, password } = loginDto;
+        const user = await Admin.findOne({username})
+        if (!user) throw new UnauthorizedException("Invalid username or password")
+        const passwordMatch = await bcrypt.compare(password, user.password)
+        if (!passwordMatch) throw new UnauthorizedException("Invalid username or password")
+        const userPayload: UserPayload = {
+            userId: user._id.toString(),
+            username
+        }
+        return await authService.generateToken(userPayload)
+    }
+
+    async getProfile(user: UserPayload) {
+        return user
+    }
+
+    async getAdmins() {
+        return await Admin.find().select('_id username')
+    }
+    
+    async getAdminById(id: Types.ObjectId) {
+        const data = await Admin.findById(id).select('_id username');
+        if (!data) throw new NotFoundException(ResourceType.ADMIN, id)
+        return data
+    }
+
+    async createAdmin(admin: IAdmin) {
+        return await Admin.create(admin)
+    }
+
+    async updateAdmin(id: Types.ObjectId, admin: IAdmin) {
+        const data = await Admin.findByIdAndUpdate(id, admin);
+        if (!data) throw new NotFoundException(ResourceType.ADMIN, id)
+        return data
+    }
+    
+    async deleteAdmin(id: Types.ObjectId) {
+        const data = await Admin.findByIdAndDelete(id);
+        if (!data) throw new NotFoundException(ResourceType.ADMIN, id)
+        return data
+    }
+
     async getExamples() {
         return await Example.find();
     }

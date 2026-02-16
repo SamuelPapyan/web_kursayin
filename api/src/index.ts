@@ -6,6 +6,7 @@ import { json } from 'body-parser'
 import cors from 'cors'
 import { errorHandlingMiddleware } from "./middlewares/error-handling.middleware"
 import cloudinaryService from "./services/cloudinary.service"
+import authService from "./services/auth.service"
 
 //Configuring .env variables
 dotenv.config()
@@ -20,6 +21,9 @@ app.use(json())
 app.use('/api/v1', router)
 // Using error handling middleware
 app.use(errorHandlingMiddleware)
+
+// Initiate auth service
+authService.initiateAuthService()
 
 // Configuring Cloudinary
 cloudinaryService.setupCloudinary()

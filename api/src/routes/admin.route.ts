@@ -10,23 +10,37 @@ import { testValidator } from '../validators/test.validator';
 import { videoValidator } from '../validators/video.validator';
 import { bookValidator } from '../validators/book.validator';
 import { MimeType } from '../enums/file-type.enum';
+import { adminUserValidator } from '../validators/admin-user.validator';
+import { adminAuth } from '../middlewares/admin-auth.middleware';
 
 const upload = multer({ dest: 'uploads/'})
 
 const router = Router();
 
 router
+    // Admin login
+    .post('/login', [...adminUserValidator], adminController.login)
+    // Current admin data
+
+
+//Authenitcated Admin routes
+router.use(adminAuth)
+
+router
+    .get('/me', adminController.getProfile)
     // Listing Routes
     .get('/examples', adminController.getExamples)
     .get('/tests', adminController.getTests)
     .get('/videos', adminController.getVideos)
     .get('/books', adminController.getBooks)
+    .get('/admins', adminController.getAdmins)
     
     // Getting by id Routes
     .get('/examples/:id', [...idRequired], validateRequest, adminController.getExampleById)
     .get('/tests/:id', [...idRequired], validateRequest, adminController.getTestById)
     .get('/videos/:id', [...idRequired], validateRequest, adminController.getVideoById)
     .get('/books/:id', [...idRequired], validateRequest, adminController.getBookById)
+    .get('/admins/:id', [...idRequired], validateRequest, adminController.getAdminById)
 
     // Creating Routes
     .post('/examples', [...exampleValidator], validateRequest, adminController.createExample)
@@ -43,6 +57,7 @@ router
         [...bookValidator],
         validateRequest,
         adminController.createBook)
+    .post('/admins', [...adminUserValidator], validateRequest, adminController.createAdmin)
     
     // Updating Routes
     .patch('/examples/:id', [...idRequired, ...exampleValidator], validateRequest, adminController.updateExample)
@@ -59,6 +74,7 @@ router
         [...idRequired, ...bookValidator], 
         validateRequest,
         adminController.updateBook)
+    .patch('/admins/:id', [...idRequired, ...adminUserValidator], validateRequest, adminController.updateAdmin)
     
     // Switch Visibility Routes
     .patch('/examples/:id/publish/:visibility', [...idRequired, ...visibilityParam], validateRequest, adminController.switchExampleVisibility)
@@ -72,5 +88,6 @@ router
     .delete('/tests/:id', [...idRequired], validateRequest, adminController.deleteTest)
     .delete('/videos/:id', [...idRequired], validateRequest, adminController.deleteVideo)
     .delete('/books/:id', [...idRequired], validateRequest, adminController.deleteBook)
+    .delete('/admins/:id', [...idRequired], validateRequest, adminController.deleteAdmin)
 
 export default router
