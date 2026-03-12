@@ -6,7 +6,11 @@ export const exampleValidator = [
         .isString().withMessage('Name must be a string')
         .isLength({ min: 1, max: 150 }).withMessage('Title length must be at least 1 and under 150 symbols'),
     
-    body('code')
-        .exists().withMessage('Code is required')
-        .isString().withMessage('Code must be a string')
+    body('htmlCode')
+        .exists().withMessage('HTML Code is required')
+        .isString().withMessage('HTML Code must be a string'),
+    
+    body('cssCode')
+        .exists().withMessage('CSS Code is required')
+        .isString().withMessage('CSS Code must be a string')
 ]

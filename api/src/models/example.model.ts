@@ -6,7 +6,11 @@ const exampleSchema = new Schema<IExample>({
         type: String,
         required: true
     },
-    code: {
+    htmlCode: {
+        type: String,
+        required: true
+    },
+    cssCode: {
         type: String,
         required: true
     },
