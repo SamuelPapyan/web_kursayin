@@ -1,0 +1,177 @@
+
+:root {
+    --bg: #f8fafc;
+    --pub-color: #069cfe;
+    --unpub-color: #FFAA00;
+    --border-color: #e2e8f0;
+    --chart-height: 500px;
+}
+
+#dashboard .row{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#dashboard .col {
+    width: 45%;
+}
+
+#dashboard h3 {
+    color: #069cfe;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+/* Total Eesources Plot */
+#total-resources-plot {
+    display: flex;
+    align-items: flex-end;
+    height: 500px;
+    border-left: 2px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
+    padding: 0 10px;
+    position: relative;
+}
+
+.blue-border {
+    border: 1px solid #069cfe;
+    border-radius: 25px;
+}
+
+/* Category Group */
+#total-resources-plot .category-group {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 4px; /* Space between the two bars in a group */
+    height: 100%;
+    position: relative;
+}
+
+/* Individual Bars */
+#total-resources-plot .bar {
+    width: 30px;
+    border-radius: 4px 4px 0 0;
+    transition: transform 0.3s ease, filter 0.2s;
+    position: relative;
+    cursor: pointer;
+}
+
+#total-resources-plot .bar:hover { filter: brightness(90%); transform: scaleX(1.05); }
+
+#total-resources-plot .pub { background-color: #069cfe; }
+#total-resources-plot .unpub { background-color: #FFAA00; }
+
+/* Tooltip-style number on top */
+#total-resources-plot .bar::after {
+    content: attr(data-value);
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    font-weight: bold;
+    color: #64748b;
+}
+
+/* X-Axis Labels */
+#total-resources-plot .x-label {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    font-weight: 600;
+    color: #475569;
+    white-space: nowrap;
+}
+
+/* Legend */
+.legend {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 60px;
+}
+
+#total-resources-plot .legend-item { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+#total-resources-plot .box { width: 14px; height: 14px; border-radius: 3px; }
+
+
+/*Total students count*/
+
+.two-plots {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#total-students-count-plot, #failed-tests-count-per-day-plot {
+    height: 150px;
+    margin-bottom: 100px;
+}
+
+#total-students-count-plot .flex-chart, #failed-tests-count-per-day-plot .flex-chart {
+    display: flex;
+    align-items: flex-end; /* Aligns all columns to the bottom axis */
+    height: 100%;
+    border-bottom: 2px solid var(--axis-color);
+    padding: 0 10px;
+    margin-bottom: 100px;
+    gap: 10px;
+}
+
+/* Each column contains one bar and its label */
+#total-students-count-plot .chart-column, #failed-tests-count-per-day-plot .chart-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Pushes bar to the bottom */
+    align-items: center;
+    height: 100%;
+    position: relative;
+}
+
+/* The Bar */
+#total-students-count-plot .bar,  #failed-tests-count-per-day-plot .bar{
+    width: 60%;
+    background-color: #069cfe;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+#total-students-count-plot .bar:hover, #failed-tests-count-per-day-plot .bar:hover{
+    transform: scaleX(1.1);
+}
+
+/* Value on top */
+#total-students-count-plot .bar::before, #failed-tests-count-per-day-plot .bar::before {
+    content: attr(data-value);
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    font-weight: 700;
+    color: #64748b;
+}
+
+/* The Rotated Label */
+#total-students-count-plot .date-label, #failed-tests-count-per-day-plot .date-label {
+    position: absolute;
+    bottom: -15px; /* Positioned just below the axis */
+    transform: rotate(90deg);
+    transform-origin: left center; /* Rotates from the start of the text */
+    white-space: nowrap;
+    font-size: 11px;
+    font-weight: 500;
+    color: #94a3b8;
+    left: 50%; /* Start at center of column */
+    padding-left: 5px;
+}
+
+/* Extra margin at bottom for the rotated text height */
+#total-students-count-plot .chart-wrapper, #failed-tests-count-per-day-plot .chart-wrapper{
+    margin-bottom: 100px;
+}

@@ -1,0 +1,34 @@
+<div class="modal-bg" id="edit-book-box" style="visibility: collapse;">
+    <div class="modal">
+        <!htmpy loading !>
+        <h2>Edit Book</h2>
+        <form id="edit-book-form" method="post">
+            <div class="form-row">
+                <div class="image-upload-form">
+                    <div class="image-box">
+                        <img src="#" alt="uploading_image" id="edit-book-cover"/>
+                    </div>
+                    <button type="button" class="upload-button" id="edit-upload-cover-button">Upload Cover</button>
+                    <div class="validation-error cover-validation-error"></div>
+                    <input type="file" name="cover" style="visibility:collapse;"/>
+                </div>
+                <div class="form-fields">
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" name="title"/>
+                        <div class="validation-error title-validation-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Link</label>
+                        <input type="text" name="link"/>
+                        <div class="validation-error link-validation-error"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="action-controls">
+                <input type="submit" value="Save" class="button create-save-button"/>
+                <button type="button" class="button outline-button cancel-button">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
