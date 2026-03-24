@@ -1,0 +1,271 @@
+.modal-bg {
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    width: 65%;
+    background-color: white;
+    border: 3px solid #069cfe;
+    border-radius: 25px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-row, .action-controls{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-upload-form, .form-fields{
+    width: 46%;
+    margin:10px
+}
+
+.form-group label {
+    display: block;
+    color: #069cfe;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    border: 1px solid #069cfe;
+    font-size: 24px;
+    border-radius: 20px;
+    padding: 5px;
+    text-indent: 20px;
+    color: #7c7c7c;
+}
+
+.image-box{
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+    border: 3px solid #069cfe;
+    height:400px;
+    margin: 0;
+}
+
+.upload-button {
+    background-color: #069cfe;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 0 0 20px 20px;
+    cursor: pointer;
+}
+
+.action-controls button {
+    margin-left: 10px;
+}
+
+.variant-box {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.variant-box input {
+    width:10%;
+    margin-right: 10px;
+}
+
+.variant-box textarea {
+    width: 90%;
+    min-width: 90%;
+    min-height: 80px;
+    max-height: 80px;
+    border: 1px solid #069cfe;
+    border-radius: 20px 0 0 20px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.long-form-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.long-form-group label {
+    color: #069cfe;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.long-form-group input {
+    width: 90%;
+    color: #7c7c7c;
+    font-size: 20px;
+    text-indent: 10px;
+    border: 1px solid #069cfe;
+    border-radius: 20px;
+}
+
+.code-column, .code-result {
+    width:49%;
+    align-self: stretch;
+}
+
+.code-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.code-column textarea {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 260px;
+    max-height: 260px;
+    border: 3px solid #069cfe;
+    padding: 10px;
+}
+
+#create-example-box .form-row, #edit-example-box .form-row{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.code-result {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.code-iframe {
+    overflow: hidden;
+    /* height: 540px; */
+    border: 3px solid #069cfe;
+    height: 95%;
+}
+
+.code-result iframe{
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.time-description-table, .time-description-table thead, .time-description-table tbody, .time-description-table tbody tr {
+    width: 100%;
+}
+
+.time-description-table input {
+    width: 100%;
+    border: 2px solid #069cfe;
+    border-radius: 25px;
+    padding:5px;
+}
+
+.time-description-table textarea {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 80px;
+    max-height: 80px;
+    border: 2px solid #069cfe;
+}
+
+.time-description-table .time-input {
+    width: 20%;
+}
+
+.time-description-table .description-input {
+    width: 60%;
+}
+
+.time-description-table button {
+    color: #069cfe;
+    border: 1px solid #069cfe;
+    background-color: white;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 2em;
+    padding: 0 10px;
+    width: 100%;
+}
+
+.time-description-table th {
+    color: #069cfe;
+    font-size: 20px;
+}
+
+.time-description-table .remove-input {
+    width: 10%;
+}
+
+.table-form {
+    width: 100%;
+    overflow: auto;
+    max-height: 300px;
+}
+
+.validation-error {
+    color: red;
+}
+
+.loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: inherit;
+    height: max-content;
+    position: fixed;
+    font-family: sans-serif;
+}
+
+.loading-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #f4f4f9;
+    border-radius: 20px;
+}
+
+/* The spinning circle */
+.spinner {
+    width: 150px;
+    height: 150px;
+    border: 15px solid #ddd;
+    border-top: 15px solid #069cfe; /* The "action" color */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* The Loading text */
+.loading-text {
+    margin-top: 15px;
+    font-size: 1.5em;
+    color: #555;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+/* Keyframes for rotation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

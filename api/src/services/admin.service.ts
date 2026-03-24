@@ -69,7 +69,7 @@ class AdminService {
     }
 
     async getExampleById(id: Types.ObjectId) {
-        const data = await Example.findById(id)
+        const data = await Example.findById(id);
         if (!data) throw new NotFoundException(ResourceType.EXAMPLE, id)
         return data;
     }
@@ -230,6 +230,7 @@ class AdminService {
 
     async switchBookVisibility(id: Types.ObjectId, visibility: Visibility) {
         const isPublished = visibility === Visibility.PUBLISH
+        console.log(visibility, isPublished);
         const data = await Book.findByIdAndUpdate(id, { isPublished })
         if (!data) throw new NotFoundException(ResourceType.BOOK, id)
         return data;

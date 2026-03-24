@@ -272,8 +272,9 @@ class AdminController {
 
     async getBookById(req: Request, res: Response, next: NextFunction) {
         try {
+            console.log("GET BOOK BY ID");
             const { id } = req.params
-            const book = await adminService.getExampleById(new Types.ObjectId(id))
+            const book = await adminService.getBookById(new Types.ObjectId(id))
             res.status(responseStatus.OK).send(responseService.createResponse(true, book, ResponseMessage.BOOK_GET_ID))
         } catch (error) {
             next(error)
