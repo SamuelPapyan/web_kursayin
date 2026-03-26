@@ -12,6 +12,7 @@ import { bookValidator } from '../validators/book.validator';
 import { MimeType } from '../enums/file-type.enum';
 import { adminUserValidator } from '../validators/admin-user.validator';
 import { adminAuth } from '../middlewares/admin-auth.middleware';
+import { searchQueryValidator } from '../validators/search-query.validator';
 
 const upload = multer({ dest: 'uploads/'})
 
@@ -20,19 +21,19 @@ const router = Router();
 router
     // Admin login
     .post('/login', [...adminUserValidator], adminController.login)
+    
+    
+    //Authenitcated Admin routes
     // Current admin data
-
-
-//Authenitcated Admin routes
 router.use(adminAuth)
 
 router
     .get('/me', adminController.getProfile)
     // Listing Routes
-    .get('/examples', adminController.getExamples)
-    .get('/tests', adminController.getTests)
-    .get('/videos', adminController.getVideos)
-    .get('/books', adminController.getBooks)
+    .get('/examples', [...searchQueryValidator], validateRequest, adminController.getExamples)
+    .get('/tests', [...searchQueryValidator], validateRequest, adminController.getTests)
+    .get('/videos', [...searchQueryValidator], validateRequest, adminController.getVideos)
+    .get('/books', [...searchQueryValidator], validateRequest, adminController.getBooks)
     .get('/admins', adminController.getAdmins)
     
     // Getting by id Routes
@@ -44,10 +45,15 @@ router
 
     // Creating Routes
     .post('/examples', [...exampleValidator], validateRequest, adminController.createExample)
-    .post('/tests', [...testValidator], validateRequest, adminController.createTest)
+    .post('/tests', 
+        upload.fields([ { name: 'image', maxCount: 1} ]),
+        uploadMiddleware([ { name: 'image', isArray: false, mimeType: MimeType.IMAGE } ]),
+        [...testValidator],
+        validateRequest,
+        adminController.createTest)
     .post('/videos',
         upload.fields([ { name: 'videoFile', maxCount: 1 } ]),
-        uploadMiddleware([ { name: 'videoFile', isArray: false, mimeType: MimeType.VIDEO } ]),
+        uploadMiddleware([ { name: 'videoFile', isArray: false, mimeType: MimeType.VIDEO, required: true } ]),
         [...videoValidator],
         validateRequest,
         adminController.createVideo)
@@ -61,7 +67,11 @@ router
     
     // Updating Routes
     .patch('/examples/:id', [...idRequired, ...exampleValidator], validateRequest, adminController.updateExample)
-    .patch('/tests/:id', [...idRequired, ...testValidator], validateRequest, adminController.updateTest)
+    .patch('/tests/:id',
+        upload.fields([ { name: 'image', maxCount: 1} ]),
+        uploadMiddleware([ { name: 'image', isArray: false, mimeType: MimeType.IMAGE } ]),
+        [...idRequired, ...testValidator],
+        validateRequest, adminController.updateTest)
     .patch('/videos/:id',
         upload.fields([ { name: 'videoFile', maxCount: 1 } ]),
         uploadMiddleware([ { name: 'videoFile', isArray: false, mimeType: MimeType.VIDEO } ]),

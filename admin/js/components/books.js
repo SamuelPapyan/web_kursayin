@@ -2,10 +2,14 @@ class BookActions {
     static async initiateBookActions() {
         await this.loadBooks(null);
     }
-    static async loadBooks(query) {
+    static async loadBooks(query=null) {
+        const listLoader = document.querySelector('#books .list-loader-container');
+        listLoader.style.display = 'block';
+
         const booksList = document.querySelector('#books-list');
+        booksList.innerHTML = "";
         const books = await BookService.getBooks(query)
-        const items = books.data.map((elem, index)=>{
+        const items = books.data.map((elem)=>{
             return `
                 <div class="book-item">
                     <div class="book-image">
@@ -23,6 +27,7 @@ class BookActions {
                 </div>
             `
         })
+        listLoader.style.display = 'none';
         booksList.innerHTML = items.join("");
         const bookPublishButtons = document.querySelectorAll('.book-item .pub-btn');
         bookPublishButtons.forEach(btn=>{
@@ -34,7 +39,7 @@ class BookActions {
         const editBookBtns = document.querySelectorAll('#books .edit-button');
         const editBookBox = document.getElementById('edit-book-box');
         [...editBookBtns].forEach(btn=>{
-            btn.onclick =  async(event)=>{
+            btn.onclick = async(event)=>{
                 const id = event.target.getAttribute('itemId');
                 await BookActions.loadBook(id);
                 editBookBox.style.visibility = 'visible';       
@@ -83,8 +88,19 @@ class BookActions {
             event.preventDefault();
             const formData = new FormData(createBookForm);
             try { 
-                await this.createBook(formData);
+                await BookActions.createBook(formData);
             } catch {}
+        }
+
+        const searchForm = document.getElementById('book-search-form');
+        const searchInput = document.getElementById('book-search');
+        searchForm.onsubmit = async (event) => {
+            event.preventDefault();
+            console.log("SEARCHING BOOKS")
+            const query = {
+                search: searchInput.value
+            }
+            await this.loadBooks(query);
         }
     }
 
@@ -151,7 +167,8 @@ class BookActions {
                 await this.loadBooks();
                 createBookBox.style.visibility = 'collapse';
                 form.reset();
-                coverOutput.src = "";
+                coverOutput.src = "images/upload_image.svg";
+                console.log(coverOutput.src)
             } else {
                 this.outputValidationErrors(res.validationErrors, createBookBox);
             }

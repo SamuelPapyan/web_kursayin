@@ -6,6 +6,10 @@ const testSchema = new Schema<ITest>({
         type: String,
         required: true
     },
+    image: {
+        type: String,
+        default: null,
+    },
     variants: {
         type: [String],
         required: true

@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="stylesheet" type="text/css" href="css/modals.css">
         <link rel="stylesheet" type="text/css" href="css/charts.css">
+        <link rel="stylesheet" type="text/css" href="css/loaders.css">
         <title>CSS Animations Admin Panel</title>
     </head>
     <body>
@@ -713,10 +714,18 @@
                         <h2>Tests</h2>
                         <div class="tests-box">
                             <div class="test-header">
-                                <input type="text" id="test-search"/>
-                                <button id="test-search-button">Search</button>
+                                <form id="test-search-form">
+                                    <input type="text" id="test-search" name="search"/>
+                                    <input type="submit" id="test-search-button" value="Search"/>
+                                </form>
                             </div>
                             <div id="tests-list">
+                                <div class="list-loader-container" style="visibility: visible;">
+                                    <div class="loading-box">
+                                        <div class="spinner"></div>
+                                        <div class="loading-text">Loading...</div>
+                                    </div>
+                                </div>
                                 <div class="test-item">
                                     <div class="test-left-box">
                                         <h3>Question Text</h3>
@@ -815,90 +824,116 @@
                         </button>
                         <div class="modal-bg" id="create-test-box" style="visibility: collapse;">
                             <div class="modal">
+                                <div class="loader-container" style="visibility: collapse;">
+                                    <div class="loading-box">
+                                        <div class="spinner"></div>
+                                        <div class="loading-text">Loading...</div>
+                                    </div>
+                                </div>
                                 <h2>Create Test</h2>
                                 <form id="create-test-form" method="post">
                                     <div class="form-row">
                                         <div class="image-upload-form">
                                             <div class="image-box">
-                                                <img src="#" alt="uploading_image"/>
+                                                <img src="images/upload_image.svg" alt="uploading_image" id="create-test-image"/>
                                             </div>
-                                            <button type="button" class="upload-button" id="upload-photo-button">Upload Photo</button>
-                                            <input type="file" name="avatar" style="visibility:collapse;"/>
+                                            <button type="button" class="upload-button" id="create-upload-image-button">Upload Photo</button>
+                                            <div class="validation-error photo-validation-error" field="image"></div>
+                                            <input type="file" name="image" style="visibility:collapse;"/>
                                         </div>
                                         <div class="form-fields">
                                             <div class="form-group">
                                                 <label>Test Title</label>
                                                 <input type="text" name="title"/>
+                                                <div class="validation-error title-validation-error" field="title"></div>
                                             </div>
                                             <div class="form-group">
                                                 <label>Theme Link</label>
                                                 <input type="text" name="themeLink"/>
+                                                <div class="validation-error themeLink-validation-error" field="themeLink"></div>
                                             </div>
                                             <div class="form-group">
                                                 <label>Variants</label>
                                                 <div class="variant-box">
                                                     <input type="radio" name="answer" value="0"/>
-                                                    <textarea name="variants[0]" placeholder="Answer 1"></textarea>
+                                                    <textarea name="variants" placeholder="Answer 1"></textarea>
                                                 </div>
+                                                <div class="validation-error vairants[0]-validation-error" field="variants[0]"></div>
                                                 <div class="variant-box">
                                                     <input type="radio" name="answer" value="1"/>
-                                                    <textarea name="variants[1]" placeholder="Answer 2"></textarea>
+                                                    <textarea name="variants" placeholder="Answer 2"></textarea>
                                                 </div>
+                                                <div class="validation-error variants[1]-validation-error" field="variants[1]"></div>
                                                 <div class="variant-box">
                                                     <input type="radio" name="answer" value="2"/>
-                                                    <textarea name="variants[2]" placeholder="Answer 3"></textarea>
+                                                    <textarea name="variants" placeholder="Answer 3"></textarea>
                                                 </div>
+                                                <div class="validation-error variants[2]-validation-error" field="variants[2]"></div>
                                             </div>
+                                            <div class="validation-error answer-validation-error" field="answer"></div>
                                         </div>
                                     </div>
                                     <div class="action-controls">
-                                        <input type="submit" value="Create" class="button edit-button"/>
-                                        <button type="button" class="button outline-button">Cancel</button>
+                                        <input type="submit" value="Create" class="button create-save-button"/>
+                                        <button type="button" class="button outline-button cancel-button">Cancel</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                         <div class="modal-bg" id="edit-test-box" style="visibility: collapse;">
                             <div class="modal">
+                                <div class="loader-container" style="visibility: collapse;">
+                                    <div class="loading-box">
+                                        <div class="spinner"></div>
+                                        <div class="loading-text">Loading...</div>
+                                    </div>
+                                </div>
                                 <h2>Edit Test</h2>
                                 <form id="edit-test-form" method="post">
                                     <div class="form-row">
                                         <div class="image-upload-form">
                                             <div class="image-box">
-                                                <img src="#" alt="uploading_image"/>
+                                                <img src="images/upload_image.svg" alt="uploading_image" id="edit-test-image"/>
                                             </div>
-                                            <button type="button" class="upload-button" id="upload-photo-button">Upload Photo</button>
-                                            <input type="file" name="avatar" style="visibility:collapse;"/>
+                                            <button type="button" class="upload-button" id="edit-upload-image-button">Upload Photo</button>
+                                            <div class="validation-error photo-validation-error" field="image"></div>
+                                            <input type="file" name="image" style="visibility:collapse;"/>
                                         </div>
                                         <div class="form-fields">
                                             <div class="form-group">
                                                 <label>Test Title</label>
                                                 <input type="text" name="title"/>
+                                                <div class="validation-error title-validation-error" field="title"></div>
                                             </div>
                                             <div class="form-group">
                                                 <label>Theme Link</label>
                                                 <input type="text" name="themeLink"/>
+                                                <div class="validation-error themeLink-validation-error" field="themeLink"></div>
                                             </div>
                                             <div class="form-group">
                                                 <label>Variants</label>
                                                 <div class="variant-box">
                                                     <input type="radio" name="answer" value="0"/>
-                                                    <textarea name="variants[0]" placeholder="Answer 1"></textarea>
+                                                    <textarea name="variants" placeholder="Answer 1"></textarea>
                                                 </div>
+                                                <div class="validation-error variants[0]-validation-error" field="variants[0]"></div>
                                                 <div class="variant-box">
                                                     <input type="radio" name="answer" value="1"/>
-                                                    <textarea name="variants[1]" placeholder="Answer 2"></textarea>
+                                                    <textarea name="variants" placeholder="Answer 2"></textarea>
                                                 </div>
+                                                <div class="validation-error variants[1]-validation-error" field="variants[1]"></div>
                                                 <div class="variant-box">
                                                     <input type="radio" name="answer" value="2"/>
-                                                    <textarea name="variants[2]" placeholder="Answer 3"></textarea>
+                                                    <textarea name="variants" placeholder="Answer 3"></textarea>
                                                 </div>
+                                                <div class="validation-error variants[2]-validation-error" field="variants[2]"></div>
                                             </div>
+                                            <div class="validation-error answer-validation-error" field="answer"></div>
                                         </div>
                                     </div>
                                     <div class="action-controls">
-                                        <input type="submit" value="Create" class="button edit-button"/>
-                                        <button type="button" class="button outline-button">Cancel</button>
+                                        <input type="submit" value="Create" class="button create-save-button"/>
+                                        <button type="button" class="button outline-button cancel-button">Cancel</button>
                                     </div>
                                 </form>
                             </div>
@@ -1087,8 +1122,16 @@
                         <h2>Books</h2>
                         <div class="tests-box">
                             <div class="test-header">
-                                <input type="text" id="test-search"/>
-                                <button id="test-search-button">Search</button>
+                                <form id="book-search-form">
+                                    <input type="text" id="book-search" name="search"/>
+                                    <input type="submit" id="book-search-button" value="Search"/>
+                                </form>
+                            </div>
+                            <div class="list-loader-container" style="visibility: visible;">
+                                <div class="loading-box">
+                                    <div class="spinner"></div>
+                                    <div class="loading-text">Loading...</div>
+                                </div>
                             </div>
                             <div id="books-list">
                                 <div class="book-item">
@@ -1197,7 +1240,7 @@
                                     <div class="form-row">
                                         <div class="image-upload-form">
                                             <div class="image-box">
-                                                <img src="#" alt="uploading_image" id="create-book-cover"/>
+                                                <img src="images/upload_image.svg" alt="uploading_image" id="create-book-cover"/>
                                             </div>
                                             <button type="button" class="upload-button" id="create-upload-cover-button">Upload Cover</button>
                                             <div class="validation-error cover-validation-error"></div>
@@ -1236,7 +1279,7 @@
                                     <div class="form-row">
                                         <div class="image-upload-form">
                                             <div class="image-box">
-                                                <img src="#" alt="uploading_image" id="edit-book-cover"/>
+                                                <img src="images/upload_image.svg" alt="uploading_image" id="edit-book-cover"/>
                                             </div>
                                             <button type="button" class="upload-button" id="edit-upload-cover-button">Upload Cover</button>
                                             <div class="validation-error cover-validation-error"></div>
@@ -1516,6 +1559,7 @@
             <script src="js/api/books.js" type="text/javascript"></script>
             <script src="js/api/videos.js" type="text/javascript"></script>
             <script src="js/components/books.js" type="text/javascript"></script>
+            <script src="js/components/tests.js" type="text/javascript"></script>
             <script src="js/script.js" type="text/javascript"></script>
         </div>
     </body>

@@ -1,7 +1,7 @@
 class VideoService {
     static async getVideos(query=null) {
         try {
-            return await httpService.get('/admin/videos')
+            return await httpService.get(`/admin/videos`, query);
         } catch (error) {
             console.error(error.message);
             return null;

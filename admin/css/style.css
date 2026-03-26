@@ -267,6 +267,17 @@ ul li::marker {
     width: 100%;
 }
 
+.test-left-box {
+    display: flex;
+    align-items: center;
+}
+
+.test-image {
+    width: 200px;
+    margin:10px;
+    border: 1px solid #acacac;
+    border-radius: 10px;
+}
 .test-header {
     background-color: #069cfe;
     border-radius: 25px 25px 0 0;
@@ -275,7 +286,13 @@ ul li::marker {
     padding: 10px;
 }
 
-.test-header input {
+.test-header form{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.test-header input[type="text"] {
     background-color:white;
     border-radius: 25px;
     margin-right: 10px;
@@ -285,10 +302,11 @@ ul li::marker {
     padding: 5px;
 }
 
-.test-header button {
+.test-header input[type="submit"] {
     background-color: white;
     color: #069cfe;
     border: none;
+    font-weight: bold;
     border-radius: 25px;
     cursor: pointer;
 }

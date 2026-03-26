@@ -40,20 +40,21 @@ const editAdminBox = document.getElementById('edit-admin-box');
     })
 })
 
+// TESTS
 const createTestBtn = document.getElementById('create-test-button');
 const createTestBox = document.getElementById('create-test-box');
 createTestBtn.addEventListener('click', ()=>{
     createTestBox.style.visibility = 'visible';
 });
 
-const editTestBtns = document.querySelectorAll('#tests .edit-button');
-const editTestBox = document.getElementById('edit-test-box');
-[...editTestBtns].forEach(btn=>{
-    btn.addEventListener('click', (event)=>{
-        const id = event.target.getAttribute('itemId');
-        editTestBox.style.visibility = 'visible';
-    })
-})
+// const editTestBtns = document.querySelectorAll('#tests .edit-button');
+// const editTestBox = document.getElementById('edit-test-box');
+// [...editTestBtns].forEach(btn=>{
+//     btn.addEventListener('click', (event)=>{
+//         const id = event.target.getAttribute('itemId');
+//         editTestBox.style.visibility = 'visible';
+//     })
+// })
 
 const createExampleBtn = document.getElementById('create-example-button');
 const createExampleBox = document.getElementById('create-example-box');
@@ -104,7 +105,10 @@ const editVideoBox = document.getElementById('edit-video-box');
 
 async function asyncMain() {
     try {
-        await BookActions.initiateBookActions();
+        await Promise.all([
+            BookActions.initiateBookActions(),
+            TestActions.initiateTestActions()
+        ]);
     } catch (error) {
         console.error(error);
     }

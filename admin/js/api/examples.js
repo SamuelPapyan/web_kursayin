@@ -1,7 +1,7 @@
 class ExampleService {
     static async getExamples(query=null) {
         try {
-            return await httpService.get('/admin/examples')
+            return await httpService.get(`/admin/examples`, query)
         } catch (error) {
             console.error(error.message);
             return null;

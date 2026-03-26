@@ -1,7 +1,7 @@
 class AdminService {
     static async getAdmins(query=null) {
         try {
-            return await httpService.get('/admin/admins')
+            return await httpService.get(`/admin/admins`, query)
         } catch (error) {
             console.error(error.message);
             return null;
