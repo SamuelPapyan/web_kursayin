@@ -1,20 +1,24 @@
 <div class="modal-bg" id="edit-example-box" style="visibility: collapse;">
     <div class="modal">
+        <!htmpy loading !>
         <h2>Edit Example</h2>
         <form id="edit-example-form" method="post">
             <div class="long-form-group">
                 <label>Name</label>
                 <input type="text" name="name"/>
             </div>
+            <div class="validation-error" field="name"></div>
             <div class="form-row">
                 <div class="code-column">
                     <div class="form-group">
                         <label>HTML Code</label>
-                        <textarea class="code"></textarea>
+                        <textarea class="htmlCode" name="htmlCode"></textarea>
+                        <div class="validation-error" field="htmlCode"></div>
                     </div>
                     <div class="form-group">
                         <label>CSS Code</label>
-                        <textarea class="code"></textarea>
+                        <textarea class="cssCode" name="cssCode"></textarea>
+                        <div class="validation-error" field="cssCode"></div>
                     </div>
                 </div>
                 <div class="code-result">
@@ -25,8 +29,8 @@
                 </div>
             </div>
             <div class="action-controls">
-                <input type="submit" value="Save" class="button edit-button"/>
-                <button type="button" class="button outline-button">Cancel</button>
+                <input type="submit" value="Save" class="button create-save-button"/>
+                <button type="button" class="button outline-button cancel-button">Cancel</button>
             </div>
         </form>
     </div>

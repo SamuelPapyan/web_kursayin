@@ -19,7 +19,8 @@ class ExampleService {
 
     static async createExample(formData) {
         try {
-            return await httpService.postFormData('/admin/examples', formData);
+            const data = Object.fromEntries(formData.entries())
+            return await httpService.post('/admin/examples', data);
         } catch (error) {
             console.error(error.message);
             return null;
@@ -28,7 +29,8 @@ class ExampleService {
 
     static async updateExample(formData, id) {
         try {
-            return await httpService.patchFormData(`/admin/examples/${id}`, formData);
+            const data = Object.fromEntries(formData.entries())
+            return await httpService.patch(`/admin/examples/${id}`, data);
         } catch (error) {
             console.error(error.message);
             return null;
@@ -44,7 +46,7 @@ class ExampleService {
         }
     }
 
-    static async changeVisibility(isPublished) {
+    static async changeVisibility(id, isPublished) {
         try {
             const visibility = isPublished ? 'unpublish' : 'publish';
             return await httpService.patch(`/admin/examples/${id}/publish/${visibility}`)

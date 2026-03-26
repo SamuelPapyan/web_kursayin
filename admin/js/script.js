@@ -107,7 +107,8 @@ async function asyncMain() {
     try {
         await Promise.all([
             BookActions.initiateBookActions(),
-            TestActions.initiateTestActions()
+            TestActions.initiateTestActions(),
+            ExampleActions.initiateExampleActions(),
         ]);
     } catch (error) {
         console.error(error);

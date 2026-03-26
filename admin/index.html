@@ -932,7 +932,7 @@
                                         </div>
                                     </div>
                                     <div class="action-controls">
-                                        <input type="submit" value="Create" class="button create-save-button"/>
+                                        <input type="submit" value="Save" class="button create-save-button"/>
                                         <button type="button" class="button outline-button cancel-button">Cancel</button>
                                     </div>
                                 </form>
@@ -943,10 +943,18 @@
                         <h2>Examples</h2>
                         <div class="tests-box">
                             <div class="test-header">
-                                <input type="text" id="test-search"/>
-                                <button id="test-search-button">Search</button>
+                                <form id="example-search-form">
+                                    <input type="text" id="example-search" name="search"/>
+                                    <input type="submit" id="test-search-button" value="Search"/>
+                                </form>
                             </div>
-                            <div id="exmaples-list">
+                            <div class="list-loader-container" style="visibility: visible;">
+                                <div class="loading-box">
+                                    <div class="spinner"></div>
+                                    <div class="loading-text">Loading...</div>
+                                </div>
+                            </div>
+                            <div id="examples-list">
                                 <div class="example-item">
                                     <div class="example-iframe">
                                         <iframe></iframe>
@@ -1053,21 +1061,30 @@
                         </button>
                         <div class="modal-bg" id="create-example-box" style="visibility: collapse;">
                             <div class="modal">
+                                <div class="loader-container" style="visibility: collapse;">
+                                    <div class="loading-box">
+                                        <div class="spinner"></div>
+                                        <div class="loading-text">Loading...</div>
+                                    </div>
+                                </div>
                                 <h2>Create Example</h2>
                                 <form id="create-example-form" method="post">
                                     <div class="long-form-group">
                                         <label>Name</label>
                                         <input type="text" name="name"/>
                                     </div>
+                                    <div class="validation-error title-validation-error" field="name"></div>
                                     <div class="form-row">
                                         <div class="code-column">
                                             <div class="form-group">
                                                 <label>HTML Code</label>
-                                                <textarea class="code"></textarea>
+                                                <textarea class="htmlCode" name="htmlCode"></textarea>
+                                                <div class="validation-error title-validation-error" field="htmlCode"></div>
                                             </div>
                                             <div class="form-group">
                                                 <label>CSS Code</label>
-                                                <textarea class="code"></textarea>
+                                                <textarea class="cssCode" name="cssCode"></textarea>
+                                                <div class="validation-error title-validation-error" field="cssCode"></div>
                                             </div>
                                         </div>
                                         <div class="code-result">
@@ -1078,29 +1095,38 @@
                                         </div>
                                     </div>
                                     <div class="action-controls">
-                                        <input type="submit" value="Create" class="button edit-button"/>
-                                        <button type="button" class="button outline-button">Cancel</button>
+                                        <input type="submit" value="Create" class="button create-save-button"/>
+                                        <button type="button" class="button outline-button cancel-button">Cancel</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                         <div class="modal-bg" id="edit-example-box" style="visibility: collapse;">
                             <div class="modal">
+                                <div class="loader-container" style="visibility: collapse;">
+                                    <div class="loading-box">
+                                        <div class="spinner"></div>
+                                        <div class="loading-text">Loading...</div>
+                                    </div>
+                                </div>
                                 <h2>Edit Example</h2>
                                 <form id="edit-example-form" method="post">
                                     <div class="long-form-group">
                                         <label>Name</label>
                                         <input type="text" name="name"/>
                                     </div>
+                                    <div class="validation-error" field="name"></div>
                                     <div class="form-row">
                                         <div class="code-column">
                                             <div class="form-group">
                                                 <label>HTML Code</label>
-                                                <textarea class="code"></textarea>
+                                                <textarea class="htmlCode" name="htmlCode"></textarea>
+                                                <div class="validation-error" field="htmlCode"></div>
                                             </div>
                                             <div class="form-group">
                                                 <label>CSS Code</label>
-                                                <textarea class="code"></textarea>
+                                                <textarea class="cssCode" name="cssCode"></textarea>
+                                                <div class="validation-error" field="cssCode"></div>
                                             </div>
                                         </div>
                                         <div class="code-result">
@@ -1111,8 +1137,8 @@
                                         </div>
                                     </div>
                                     <div class="action-controls">
-                                        <input type="submit" value="Save" class="button edit-button"/>
-                                        <button type="button" class="button outline-button">Cancel</button>
+                                        <input type="submit" value="Save" class="button create-save-button"/>
+                                        <button type="button" class="button outline-button cancel-button">Cancel</button>
                                     </div>
                                 </form>
                             </div>
@@ -1560,6 +1586,7 @@
             <script src="js/api/videos.js" type="text/javascript"></script>
             <script src="js/components/books.js" type="text/javascript"></script>
             <script src="js/components/tests.js" type="text/javascript"></script>
+            <script src="js/components/examples.js" type="text/javascript"></script>
             <script src="js/script.js" type="text/javascript"></script>
         </div>
     </body>

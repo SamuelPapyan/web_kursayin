@@ -8,11 +8,11 @@ const exampleSchema = new Schema<IExample>({
     },
     htmlCode: {
         type: String,
-        required: true
+        default: ""
     },
     cssCode: {
         type: String,
-        required: true
+        default: ""
     },
     isPublished: {
         type: Boolean,

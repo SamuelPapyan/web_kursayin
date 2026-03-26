@@ -103,6 +103,7 @@ class AdminController {
     async createExample(req: Request, res: Response, next: NextFunction) {
         try {
             const { body } = req;
+            console.log(body);
             const example = await adminService.createExample(body)
             res.status(responseStatus.OK).send(responseService.createResponse(true, example, ResponseMessage.EXAMPLE_POST))
         } catch (error) {
