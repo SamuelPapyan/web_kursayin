@@ -47,7 +47,6 @@ class TestService {
     static async changeVisibility(id, isPublished) {
         try {
             const visibility = isPublished ? 'unpublish' : 'publish';
-            console.log(visibility);
             return await httpService.patch(`/admin/tests/${id}/publish/${visibility}`)
         } catch (error) {
             console.error(error.message);

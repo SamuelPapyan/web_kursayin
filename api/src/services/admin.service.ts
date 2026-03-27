@@ -150,7 +150,6 @@ class AdminService {
 
     async switchTestVisibility(id: Types.ObjectId, visibility: Visibility) {
         const isPublished = visibility === Visibility.PUBLISH
-        console.log(isPublished)
         const data = await Test.findByIdAndUpdate(id, { isPublished })
         if (!data) throw new NotFoundException(ResourceType.TEST, id)
         return data;
@@ -266,7 +265,6 @@ class AdminService {
 
     async switchBookVisibility(id: Types.ObjectId, visibility: Visibility) {
         const isPublished = visibility === Visibility.PUBLISH
-        console.log(visibility, isPublished);
         const data = await Book.findByIdAndUpdate(id, { isPublished })
         if (!data) throw new NotFoundException(ResourceType.BOOK, id)
         return data;

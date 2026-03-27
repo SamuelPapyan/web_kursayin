@@ -229,3 +229,11 @@
 .validation-error {
     color: red;
 }
+
+.video-box {
+    width: 100%;
+}
+
+.video-box video {
+    width: 100%;
+}

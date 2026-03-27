@@ -264,7 +264,6 @@ class ExampleActions {
 
     static async changeVisibility(elem) {
         const id = elem.getAttribute('itemId');
-        console.log(id);
         const isPublished = !elem.classList.contains('publish-button');
         await ExampleService.changeVisibility(id, isPublished);
         if (isPublished)

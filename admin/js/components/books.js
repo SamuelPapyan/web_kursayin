@@ -96,7 +96,6 @@ class BookActions {
         const searchInput = document.getElementById('book-search');
         searchForm.onsubmit = async (event) => {
             event.preventDefault();
-            console.log("SEARCHING BOOKS")
             const query = {
                 search: searchInput.value
             }
@@ -168,7 +167,6 @@ class BookActions {
                 createBookBox.style.visibility = 'collapse';
                 form.reset();
                 coverOutput.src = "images/upload_image.svg";
-                console.log(coverOutput.src)
             } else {
                 this.outputValidationErrors(res.validationErrors, createBookBox);
             }

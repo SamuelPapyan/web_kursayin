@@ -103,7 +103,6 @@ class AdminController {
     async createExample(req: Request, res: Response, next: NextFunction) {
         try {
             const { body } = req;
-            console.log(body);
             const example = await adminService.createExample(body)
             res.status(responseStatus.OK).send(responseService.createResponse(true, example, ResponseMessage.EXAMPLE_POST))
         } catch (error) {
@@ -278,7 +277,6 @@ class AdminController {
 
     async getBookById(req: Request, res: Response, next: NextFunction) {
         try {
-            console.log("GET BOOK BY ID");
             const { id } = req.params
             const book = await adminService.getBookById(new Types.ObjectId(id))
             res.status(responseStatus.OK).send(responseService.createResponse(true, book, ResponseMessage.BOOK_GET_ID))

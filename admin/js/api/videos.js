@@ -44,7 +44,7 @@ class VideoService {
         }
     }
 
-    static async changeVisibility(isPublished) {
+    static async changeVisibility(id, isPublished) {
         try {
             const visibility = isPublished ? 'unpublish' : 'publish';
             return await httpService.patch(`/admin/videos/${id}/publish/${visibility}`)

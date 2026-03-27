@@ -347,7 +347,7 @@ ul li::marker {
     background-color: orange;
 }
 
-.edit-button, .create-save-button {
+.edit-button, .create-save-button, .add-time-item-button {
     background-color: #069cfe;
 }
 
@@ -404,11 +404,14 @@ ul li::marker {
 
 .example-iframe, .book-image, .video-src{
     width: 100%;
-    aspect-ratio: 1;
     margin: 0;
     border: 3px solid #069cfe;
     border-radius: 20px 20px 0 0;
     overflow: hidden;
+}
+
+.example-iframe {
+    aspect-ratio: 1;
 }
 
 .example-iframe iframe, .book-image img, .video-src video {
