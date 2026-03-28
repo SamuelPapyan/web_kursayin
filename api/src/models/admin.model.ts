@@ -1,8 +1,13 @@
 import { Schema, model } from "mongoose";
 import { IAdmin } from "../interfaces/admin.interface";
 import bcrypt from 'bcrypt'
+import { AdminRole } from "../enums/admin-role.enum";
 
 const adminSchema = new Schema<IAdmin>({
+    fullName: {
+        type: String,
+        required: true,
+    },
     username: {
         type: String,
         required: true,
@@ -11,7 +16,34 @@ const adminSchema = new Schema<IAdmin>({
     password: {
         type: String,
         required: true
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    birthDate: {
+        type: Date,
+        required: true
+    },
+    phone: {
+        type: String,
+        default: ""
+    },
+    avatar: {
+        type: String,
+        default: null
+    },
+    role: {
+        type: String,
+        default: AdminRole.ADMIN_READ
+    },
+    enabled2fa: {
+        type: Boolean,
+        default: false
     }
+}, {
+    timestamps: true
 });
 
 adminSchema.pre('save', async function(next) {
