@@ -1,7 +1,7 @@
 class BookService {
     static async getBooks(query=null) {
         try {
-            return await httpService.get('/admin/books')
+            return await httpService.get(`/admin/books`, query)
         } catch (error) {
             console.error(error.message);
             return null;

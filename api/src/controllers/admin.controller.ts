@@ -7,6 +7,7 @@ import { responseStatus } from '../enums/response.enum'
 import responseService from '../services/response.service'
 import { ResponseMessage } from '../enums/response-message.enum'
 import { IAdmin } from '../interfaces/admin.interface'
+import { SearchQuery } from '../interfaces/search-query.interface'
 
 class AdminController {
     async login(req: Request, res: Response, next: NextFunction) {
@@ -81,7 +82,8 @@ class AdminController {
 
     async getExamples(req: Request, res: Response, next: NextFunction) {
         try {
-            const examples = await adminService.getExamples()
+            const { query } = req;
+            const examples = await adminService.getExamples(query as SearchQuery)
             res.status(responseStatus.OK).send(responseService.createResponse(true, examples, ResponseMessage.EXAMPLE_GET))
         } catch (error) {
             next(error)
@@ -141,7 +143,8 @@ class AdminController {
 
     async getTests(req: Request, res: Response, next: NextFunction) {
         try {
-            const tests = await adminService.getTests()
+            const { query } = req;
+            const tests = await adminService.getTests(query as SearchQuery)
             res.status(responseStatus.OK).send(responseService.createResponse(true, tests, ResponseMessage.TEST_GET))
         } catch (error) {
             next(error)
@@ -161,7 +164,7 @@ class AdminController {
     async createTest(req: Request, res: Response, next: NextFunction) {
         try {
             const { body } = req;
-            const test = await adminService.createTest(body)
+            const test = await adminService.createTest(body, req.encodedFiles.get("image"))
             res.status(responseStatus.OK).send(responseService.createResponse(true, test, ResponseMessage.TEST_POST))
         } catch (error) {
             next(error)
@@ -172,7 +175,7 @@ class AdminController {
         try {
             const { id } = req.params;
             const { body } = req;
-            const test = await adminService.updateTest(new Types.ObjectId(id), body)
+            const test = await adminService.updateTest(new Types.ObjectId(id), body, req.encodedFiles.get('image'))
             res.status(responseStatus.OK).send(responseService.createResponse(true, test, ResponseMessage.TEST_PATCH))
         } catch (error) {
             next(error)
@@ -201,7 +204,8 @@ class AdminController {
 
     async getVideos(req: Request, res: Response, next: NextFunction) {
         try {
-            const videos = await adminService.getVideos()
+            const { query } = req;
+            const videos = await adminService.getVideos(query as SearchQuery)
             res.status(responseStatus.OK).send(responseService.createResponse(true, videos, ResponseMessage.VIDEO_GET))
         } catch (error) {
             next(error)
@@ -263,7 +267,8 @@ class AdminController {
 
     async getBooks(req: Request, res: Response, next: NextFunction) {
         try {
-            const books = await adminService.getBooks()
+            const { query } = req
+            const books = await adminService.getBooks(query as SearchQuery)
             res.status(responseStatus.OK).send(responseService.createResponse(true, books, ResponseMessage.BOOK_GET))
         } catch (error) {
             next(error)
@@ -272,7 +277,6 @@ class AdminController {
 
     async getBookById(req: Request, res: Response, next: NextFunction) {
         try {
-            console.log("GET BOOK BY ID");
             const { id } = req.params
             const book = await adminService.getBookById(new Types.ObjectId(id))
             res.status(responseStatus.OK).send(responseService.createResponse(true, book, ResponseMessage.BOOK_GET_ID))

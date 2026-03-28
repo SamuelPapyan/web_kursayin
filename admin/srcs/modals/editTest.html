@@ -1,44 +1,52 @@
 <div class="modal-bg" id="edit-test-box" style="visibility: collapse;">
     <div class="modal">
+        <!htmpy loading !>
         <h2>Edit Test</h2>
         <form id="edit-test-form" method="post">
             <div class="form-row">
                 <div class="image-upload-form">
                     <div class="image-box">
-                        <img src="#" alt="uploading_image"/>
+                        <img src="images/upload_image.svg" alt="uploading_image" id="edit-test-image"/>
                     </div>
-                    <button type="button" class="upload-button" id="upload-photo-button">Upload Photo</button>
-                    <input type="file" name="avatar" style="visibility:collapse;"/>
+                    <button type="button" class="upload-button" id="edit-upload-image-button">Upload Photo</button>
+                    <div class="validation-error photo-validation-error" field="image"></div>
+                    <input type="file" name="image" style="visibility:collapse;"/>
                 </div>
                 <div class="form-fields">
                     <div class="form-group">
                         <label>Test Title</label>
                         <input type="text" name="title"/>
+                        <div class="validation-error title-validation-error" field="title"></div>
                     </div>
                     <div class="form-group">
                         <label>Theme Link</label>
                         <input type="text" name="themeLink"/>
+                        <div class="validation-error themeLink-validation-error" field="themeLink"></div>
                     </div>
                     <div class="form-group">
                         <label>Variants</label>
                         <div class="variant-box">
                             <input type="radio" name="answer" value="0"/>
-                            <textarea name="variants[0]" placeholder="Answer 1"></textarea>
+                            <textarea name="variants" placeholder="Answer 1"></textarea>
                         </div>
+                        <div class="validation-error variants[0]-validation-error" field="variants[0]"></div>
                         <div class="variant-box">
                             <input type="radio" name="answer" value="1"/>
-                            <textarea name="variants[1]" placeholder="Answer 2"></textarea>
+                            <textarea name="variants" placeholder="Answer 2"></textarea>
                         </div>
+                        <div class="validation-error variants[1]-validation-error" field="variants[1]"></div>
                         <div class="variant-box">
                             <input type="radio" name="answer" value="2"/>
-                            <textarea name="variants[2]" placeholder="Answer 3"></textarea>
+                            <textarea name="variants" placeholder="Answer 3"></textarea>
                         </div>
+                        <div class="validation-error variants[2]-validation-error" field="variants[2]"></div>
                     </div>
+                    <div class="validation-error answer-validation-error" field="answer"></div>
                 </div>
             </div>
             <div class="action-controls">
-                <input type="submit" value="Create" class="button edit-button"/>
-                <button type="button" class="button outline-button">Cancel</button>
+                <input type="submit" value="Save" class="button create-save-button"/>
+                <button type="button" class="button outline-button cancel-button">Cancel</button>
             </div>
         </form>
     </div>

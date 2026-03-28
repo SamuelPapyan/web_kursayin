@@ -1,18 +1,21 @@
 <div class="modal-bg" id="create-video-box" style="visibility: hidden;">
     <div class="modal">
+        <!htmpy loading !>
         <h2>Create Video</h2>
         <form id="create-video-form" method="post">
             <div class="long-form-group">
-                <label>Name</label>
-                <input type="text" name="name"/>
+                <label>Title</label>
+                <input type="text" name="title"/>
             </div>
+            <div class="validation-error" field="title"></div>
             <div class="form-row">
                 <div class="image-upload-form">
-                    <div class="image-box">
-                        <img src="#" alt="uploading_image"/>
+                    <div class="video-box">
+                        <video id="create-video-preview" autoplay controls></video>
                     </div>
-                    <button type="button" class="upload-button" id="upload-video-button">Upload Video</button>
-                    <input type="file" name="cover" style="visibility:collapse;"/>
+                    <button type="button" class="upload-button" id="create-upload-video-button">Upload Video</button>
+                    <div class="validation-error" field="videoFile"></div>
+                    <input type="file" name="videoFile" style="visibility:collapse;"/>
                 </div>
                 <div class="form-fields">
                     <div class="table-form">
@@ -25,37 +28,43 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr rowId="1">
+                                <tr rowId="0">
                                     <td class="time-input">
-                                        <input type="text" name="time"/>
+                                        <input type="text" placeholder="00:00:00" maxlength="8" class="time-field" name="details[0][time]"/>
+                                        <div class="validation-error" field="details[0].time"></div>
                                     </td>
                                     <td class="description-input">
-                                        <textarea name="description"></textarea>
+                                        <textarea class="description-field" name="details[0][content]"></textarea>
+                                        <div class="validation-error" field="details[0].content"></div>
                                     </td>
                                     <td>
-                                        <button type="button" class="remove-button">-</button>
+                                        <button type="button" class="remove-button" rowId="0">-</button>
+                                    </td>
+                                </tr>
+                                <tr rowId="1">
+                                    <td class="time-input">
+                                        <input type="text" placeholder="00:00:00" maxlength="8" class="time-field" name="details[1][time]"/>
+                                        <div class="validation-error" field="details[1].time"></div>
+                                    </td>
+                                    <td class="description-input">
+                                        <textarea class="description-field" name="details[1][content]"></textarea>
+                                        <div class="validation-error" field="details[1].content"></div>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="remove-button" rowId="1">-</button>
                                     </td>
                                 </tr>
                                 <tr rowId="2">
                                     <td class="time-input">
-                                        <input type="text" name="time"/>
+                                        <input type="text" placeholder="00:00:00" maxlength="8" class="time-field" name="details[2][time]"/>
+                                        <div class="validation-error" field="details[2].time"></div>
                                     </td>
                                     <td class="description-input">
-                                    <textarea name="description"></textarea>
-                                    </td>
-                                    <td class="remove-input">
-                                        <button type="button" class="remove-button">-</button>
-                                    </td>
-                                </tr>
-                                <tr rowId="3">
-                                    <td class="time-input">
-                                        <input type="text" name="time"/>
-                                    </td>
-                                    <td class="description-input">
-                                        <textarea name="description"></textarea>
+                                        <textarea class="description-field" name="details[2][content]"></textarea>
+                                        <div class="validation-error" field="details[2].content"></div>
                                     </td>
                                     <td>
-                                        <button type="button" class="remove-button">-</button>
+                                        <button type="button" class="remove-button" rowId="2">-</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -65,8 +74,8 @@
                 </div>
             </div>
             <div class="action-controls">
-                <input type="submit" value="Create" class="button edit-button"/>
-                <button type="button" class="button outline-button">Cancel</button>
+                <input type="submit" value="Create" class="button create-save-button"/>
+                <button type="button" class="button outline-button cancel-button">Cancel</button>
             </div>
         </form>
     </div>

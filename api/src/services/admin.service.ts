@@ -19,6 +19,7 @@ import { UnauthorizedException } from "../exceptions/unauthorized.exception";
 import bcrypt from "bcrypt"
 import authService from "./auth.service";
 import { IAdmin } from "../interfaces/admin.interface";
+import { SearchQuery } from "../interfaces/search-query.interface";
 
 class AdminService {
     async login(loginDto: ILogin) {
@@ -64,7 +65,13 @@ class AdminService {
         return data
     }
 
-    async getExamples() {
+    async getExamples(query: SearchQuery) {
+        if (query) {
+            const { search } = query;
+            return await Example.find({
+                ...(search ? {name: { $regex: search, $options: 'i'} } : {})
+            });
+        }
         return await Example.find();
     }
 
@@ -97,7 +104,13 @@ class AdminService {
         return data;
     }
 
-    async getTests() {
+    async getTests(query: SearchQuery) {
+        if (query) {
+            const { search } = query;
+            return await Test.find({
+                ...(search ? {title: { $regex: search, $options: 'i'} } : {})
+            })
+        }
         return await Test.find()
     }
 
@@ -107,14 +120,22 @@ class AdminService {
         return data;
     }
 
-    async createTest(test: ITest) {
-        const { title, themeLink, variants, answer } = test;
-        return await Test.create({title, variants, answer, themeLink})
+    async createTest(test: ITest, file: string) {
+        if (file) 
+            test.image = await cloudinaryService.uploadFile(file, Date.now().toString(), FileType.IMAGE, 'css_animation/test_images');
+        const { title, themeLink, variants, answer, image } = test;
+        return await Test.create({title, variants, answer, themeLink, image})
     }
 
-    async updateTest(id: Types.ObjectId, test: ITest) {
-        const { title, themeLink, variants, answer } = test;
-        const data =  await Test.findByIdAndUpdate(id, {title, variants, answer, themeLink})
+    async updateTest(id: Types.ObjectId, test: ITest, file: string) {
+        if (file) {
+            const theTest = await Test.findById(id);
+            await cloudinaryService.removeFile(theTest.image);
+            const url = await cloudinaryService.uploadFile(file, id.toString(), FileType.IMAGE, 'css_animation/test_images')
+            test.image = url           
+        }
+        const { title, themeLink, variants, answer, image } = test;
+        const data =  await Test.findByIdAndUpdate(id, {title, variants, answer, themeLink, image})
         if (!data) throw new NotFoundException(ResourceType.TEST, id)
         return data;
     }
@@ -122,6 +143,8 @@ class AdminService {
     async deleteTest(id: Types.ObjectId) {
         const data = await Test.findByIdAndDelete(id)
         if (!data) throw new NotFoundException(ResourceType.TEST, id)
+        if (data.image)
+            await cloudinaryService.removeFile(data.image);
         return data;
     }
 
@@ -132,7 +155,13 @@ class AdminService {
         return data;
     }
 
-    async getVideos() {
+    async getVideos(query: SearchQuery) {
+        if (query) {
+            const { search } = query;
+            return await Video.find({
+                ...(search ? {title: { $regex: search, $options: 'i'} } : {})
+            })
+        }
         return await Video.find()
     }
 
@@ -192,7 +221,13 @@ class AdminService {
         return data;
     }
 
-    async getBooks() {
+    async getBooks(query: SearchQuery) {
+        if (query) {
+            const { search } = query;
+            return await Book.find({
+                ...(search ? {title: { $regex: search, $options: 'i'} } : {})
+            })
+        }
         return await Book.find()
     }
 
@@ -230,7 +265,6 @@ class AdminService {
 
     async switchBookVisibility(id: Types.ObjectId, visibility: Visibility) {
         const isPublished = visibility === Visibility.PUBLISH
-        console.log(visibility, isPublished);
         const data = await Book.findByIdAndUpdate(id, { isPublished })
         if (!data) throw new NotFoundException(ResourceType.BOOK, id)
         return data;

@@ -26,5 +26,6 @@ export const videoValidator = [
     body('details.*.content')
         .exists().withMessage('Detail content is required')
         .isString().withMessage('Detail content must be a string')
+        .isLength({min: 1}).withMessage('Deail content must be filled')
         
 ]

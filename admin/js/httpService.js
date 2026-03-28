@@ -5,8 +5,8 @@ class HttpService {
 
     async get(endpoint, query=null) {
         let url = `${this.apiUri}${endpoint}`
-        console.log(url);
         if (query) url += this.getQueryString(query);
+        console.log(url);
         const response = await fetch(url, {
             headers: {
                 Accept: 'application/json',
@@ -39,6 +39,7 @@ class HttpService {
 
     async patch(endpoint, body) {
         let url = `${this.apiUri}${endpoint}`
+        console.log(endpoint);
         const response = await fetch(url, {
             method: 'PATCH',
             headers: {

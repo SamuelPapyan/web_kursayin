@@ -1,7 +1,7 @@
 class VideoService {
     static async getVideos(query=null) {
         try {
-            return await httpService.get('/admin/videos')
+            return await httpService.get(`/admin/videos`, query);
         } catch (error) {
             console.error(error.message);
             return null;
@@ -44,7 +44,7 @@ class VideoService {
         }
     }
 
-    static async changeVisibility(isPublished) {
+    static async changeVisibility(id, isPublished) {
         try {
             const visibility = isPublished ? 'unpublish' : 'publish';
             return await httpService.patch(`/admin/videos/${id}/publish/${visibility}`)

@@ -1,7 +1,7 @@
 class StudentService {
     static async getStudents(query=null) {
         try {
-            return await httpService.get('/admin/students')
+            return await httpService.get(`/admin/students`, query)
         } catch (error) {
             console.error(error.message);
             return null;

@@ -1,7 +1,7 @@
 class TestService {
     static async getTests(query=null) {
         try {
-            return await httpService.get('/admin/tests')
+            return await httpService.get(`/admin/tests`, query)
         } catch (error) {
             console.error(error.message);
             return null;
@@ -44,7 +44,7 @@ class TestService {
         }
     }
 
-    static async changeVisibility(isPublished) {
+    static async changeVisibility(id, isPublished) {
         try {
             const visibility = isPublished ? 'unpublish' : 'publish';
             return await httpService.patch(`/admin/tests/${id}/publish/${visibility}`)

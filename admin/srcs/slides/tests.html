@@ -2,10 +2,13 @@
     <h2>Tests</h2>
     <div class="tests-box">
         <div class="test-header">
-            <input type="text" id="test-search"/>
-            <button id="test-search-button">Search</button>
+            <form id="test-search-form">
+                <input type="text" id="test-search" name="search"/>
+                <input type="submit" id="test-search-button" value="Search"/>
+            </form>
         </div>
         <div id="tests-list">
+            <!htmpy listLoading !>
             <div class="test-item">
                 <div class="test-left-box">
                     <h3>Question Text</h3>

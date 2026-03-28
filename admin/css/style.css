@@ -267,6 +267,17 @@ ul li::marker {
     width: 100%;
 }
 
+.test-left-box {
+    display: flex;
+    align-items: center;
+}
+
+.test-image {
+    width: 200px;
+    margin:10px;
+    border: 1px solid #acacac;
+    border-radius: 10px;
+}
 .test-header {
     background-color: #069cfe;
     border-radius: 25px 25px 0 0;
@@ -275,7 +286,13 @@ ul li::marker {
     padding: 10px;
 }
 
-.test-header input {
+.test-header form{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.test-header input[type="text"] {
     background-color:white;
     border-radius: 25px;
     margin-right: 10px;
@@ -285,16 +302,17 @@ ul li::marker {
     padding: 5px;
 }
 
-.test-header button {
+.test-header input[type="submit"] {
     background-color: white;
     color: #069cfe;
     border: none;
+    font-weight: bold;
     border-radius: 25px;
     cursor: pointer;
 }
 
-#tests-list, #exmaples-list, #books-list, #videos-list {
-    height: 500px;
+#tests-list, #examples-list, #books-list, #videos-list {
+    height: 650px;
     overflow: auto;
     border-bottom: 1px solid #c1c1c1;
 }
@@ -329,7 +347,7 @@ ul li::marker {
     background-color: orange;
 }
 
-.edit-button, .create-save-button {
+.edit-button, .create-save-button, .add-time-item-button {
     background-color: #069cfe;
 }
 
@@ -361,7 +379,7 @@ ul li::marker {
 }
 
 /* Examples */
-#exmaples-list, #books-list, #videos-list {
+#examples-list, #books-list, #videos-list {
     padding: 10px;
     width: 100%;
     display: flex;
@@ -386,11 +404,14 @@ ul li::marker {
 
 .example-iframe, .book-image, .video-src{
     width: 100%;
-    height: 300px;
     margin: 0;
     border: 3px solid #069cfe;
     border-radius: 20px 20px 0 0;
     overflow: hidden;
+}
+
+.example-iframe {
+    aspect-ratio: 1;
 }
 
 .example-iframe iframe, .book-image img, .video-src video {
@@ -418,4 +439,10 @@ ul li::marker {
 
 .example-actions button, .book-actions button{
     margin-left: 10px;
+}
+
+#examples textarea{
+    color: #1a1a1a;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
 }

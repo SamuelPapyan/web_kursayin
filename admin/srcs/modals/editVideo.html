@@ -1,18 +1,19 @@
 <div class="modal-bg" id="edit-video-box" style="visibility: hidden;">
     <div class="modal">
+        <!htmpy loading !>
         <h2>Edit Video</h2>
         <form id="edit-video-form" method="post">
             <div class="long-form-group">
-                <label>Name</label>
-                <input type="text" name="name"/>
+                <label>Title</label>
+                <input type="text" name="title"/>
             </div>
             <div class="form-row">
                 <div class="image-upload-form">
-                    <div class="image-box">
-                        <img src="#" alt="uploading_image"/>
+                    <div class="video-box">
+                        <video id="edit-video-preview" autoplay controls></video>
                     </div>
-                    <button type="button" class="upload-button" id="upload-video-button">Upload Video</button>
-                    <input type="file" name="cover" style="visibility:collapse;"/>
+                    <button type="button" class="upload-button" id="edit-upload-video-button">Upload Video</button>
+                    <input type="file" name="videoFile" style="visibility:collapse;"/>
                 </div>
                 <div class="form-fields">
                     <div class="table-form">
@@ -25,48 +26,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr rowId="1">
-                                    <td class="time-input">
-                                        <input type="text" name="time"/>
-                                    </td>
-                                    <td class="description-input">
-                                        <textarea name="description"></textarea>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="remove-button">-</button>
-                                    </td>
-                                </tr>
-                                <tr rowId="2">
-                                    <td class="time-input">
-                                        <input type="text" name="time"/>
-                                    </td>
-                                    <td class="description-input">
-                                    <textarea name="description"></textarea>
-                                    </td>
-                                    <td class="remove-input">
-                                        <button type="button" class="remove-button">-</button>
-                                    </td>
-                                </tr>
-                                <tr rowId="3">
-                                    <td class="time-input">
-                                        <input type="text" name="time"/>
-                                    </td>
-                                    <td class="description-input">
-                                        <textarea name="description"></textarea>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="remove-button">-</button>
-                                    </td>
-                                </tr>
+                               
                             </tbody>
                         </table>
                     </div>
-                    <button type="button" class="edit-button button" id="create-add-time-desc">+ Add</button>
+                    <button type="button" class="add-time-item-button button" id="edit-add-time-desc">+ Add</button>
                 </div>
             </div>
             <div class="action-controls">
-                <input type="submit" value="Save" class="button edit-button"/>
-                <button type="button" class="button outline-button">Cancel</button>
+                <input type="submit" value="Save" class="button create-save-button"/>
+                <button type="button" class="button outline-button cancel-button">Cancel</button>
             </div>
         </form>
     </div>
