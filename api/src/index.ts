@@ -7,32 +7,41 @@ import cors from 'cors'
 import { errorHandlingMiddleware } from "./middlewares/error-handling.middleware"
 import cloudinaryService from "./services/cloudinary.service"
 import authService from "./services/auth.service"
+import redisService from "./services/redis.service"
+import mailService from "./services/mail.service"
 
-//Configuring .env variables
-dotenv.config()
+async function main() {
+    //Configuring .env variables
+    dotenv.config()
 
-// Initiating express app
-const app = express()
-// Using CORS
-app.use(cors())
-// Using JSON body parser
-app.use(json())
-// Using main api router
-app.use('/api/v1', router)
-// Using error handling middleware
-app.use(errorHandlingMiddleware)
+    // Initiating express app
+    const app = express()
+    // Using CORS
+    app.use(cors())
+    // Using JSON body parser
+    app.use(json())
+    // Using main api router
+    app.use('/api/v1', router)
+    // Using error handling middleware
+    app.use(errorHandlingMiddleware)
 
-// Initiate auth service
-authService.initiateAuthService()
+    // Initiate auth service
+    authService.initiateAuthService()
 
-// Configuring Cloudinary
-cloudinaryService.setupCloudinary()
+    // Configuring Cloudinary
+    cloudinaryService.setupCloudinary()
+    // Configuring Redis
+    redisService.setupRedis();
+    // Configuring Mail Service
+    mailService.setupMailService();
 
-//Connecting to DB
-mongoose.connect(process.env.MONGO_DB_URL).then(()=>{
+    await mongoose.connect(process.env.MONGO_DB_URL);
     console.log("Database connection estabilisted!")
-    // Listening
+    await redisService.connect();
+    console.log("Redis connection estabilisted!")
     app.listen(2026, ()=>{
         console.log("Api Listening to 2026!")
     })
-})
+}
+
+main()

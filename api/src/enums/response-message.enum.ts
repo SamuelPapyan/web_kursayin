@@ -34,4 +34,7 @@ export enum ResponseMessage {
     ADMIN_POST = "Admin created successful.",
     ADMIN_PATCH = "Admin updated successful",
     ADMIN_DELETE = "Admin deleted successful",
+
+    STUDENT_LOGIN = "Student logged in via email",
+    STUDENT_VERIFY = "Student verified successfully"
 }
