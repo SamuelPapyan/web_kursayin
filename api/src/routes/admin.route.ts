@@ -13,7 +13,7 @@ import { MimeType } from '../enums/file-type.enum';
 import { adminUserValidator } from '../validators/admin-user.validator';
 import { adminAuth } from '../middlewares/admin-auth.middleware';
 import { searchQueryValidator } from '../validators/search-query.validator';
-import { adminUserLoginValidator } from '../validators/admin-user-login.validator copy';
+import { adminUserLoginValidator } from '../validators/admin-user-login.validator';
 
 const upload = multer({ dest: 'uploads/'})
 
@@ -24,11 +24,11 @@ router
     .post('/login', [...adminUserLoginValidator], adminController.login)
     
     //Authenitcated Admin routes
-    // Current admin data
-router.use(adminAuth)
-
+    router.use(adminAuth)
+    
 router
-    // Admin user settings
+// Admin user settings
+    // Current admin data
     .get('/me', adminController.getProfile)
     // Listing Routes
     .get('/examples', [...searchQueryValidator], validateRequest, adminController.getExamples)

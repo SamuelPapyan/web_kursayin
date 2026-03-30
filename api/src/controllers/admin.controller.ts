@@ -13,8 +13,8 @@ class AdminController {
     async login(req: Request, res: Response, next: NextFunction) {
         try {
             const { username, password } = req.body as unknown as IAdmin
-            const examples = await adminService.login({ username, password })
-            res.status(responseStatus.OK).send(responseService.createResponse(true, examples, ResponseMessage.ADMIN_LOGIN))
+            const token = await adminService.login({ username, password })
+            res.status(responseStatus.OK).send(responseService.createResponse(true, token, ResponseMessage.ADMIN_LOGIN))
         } catch (error) {
             next(error)
         }
