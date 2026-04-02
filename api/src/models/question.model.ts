@@ -1,7 +1,7 @@
 import { model, Schema } from "mongoose";
-import { ITest } from "../interfaces/test.interface";
+import { IQuestion } from "../interfaces/question.interface";
 
-const testSchema = new Schema<ITest>({
+const questionSchema = new Schema<IQuestion>({
     title: {
         type: String,
         required: true
@@ -30,4 +30,4 @@ const testSchema = new Schema<ITest>({
     timestamps: true
 })
 
-export const Test = model('Test', testSchema)
+export const Question = model('Question', questionSchema)

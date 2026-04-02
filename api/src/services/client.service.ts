@@ -1,13 +1,12 @@
 import { UnauthorizedException } from "../exceptions/unauthorized.exception";
 import { Book } from "../models/book.model";
 import { Example } from "../models/example.model";
-import { Test } from "../models/test.model";
+import { Question } from "../models/question.model";
 import { Video } from "../models/video.model";
 import { IOTP } from "../interfaces/otp.interface";
 import mailService from "./mail.service";
 import redisService from "./redis.service";
 import { Student } from "../models/student.model";
-import { listeners } from "node:cluster";
 import { UserPayload } from "../interfaces/user-payload.interface";
 import authService from "./auth.service";
 
@@ -51,7 +50,7 @@ class ClientService {
     }
 
     async getTests() {
-        return await Test.find({isPublished: true}).populate('variants').populate('answer')
+        return await Question.find({isPublished: true}).populate('variants').populate('answer')
     }
 
     async getVideos() {

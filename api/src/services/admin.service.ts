@@ -2,11 +2,11 @@ import { Types } from "mongoose";
 import { IExample } from "../interfaces/example.interface";
 import { Book } from "../models/book.model";
 import { Example } from "../models/example.model";
-import { Test } from "../models/test.model";
+import { Question } from "../models/question.model";
 import { Video } from "../models/video.model";
 import { IVideo } from "../interfaces/video.interface";
 import { IBook } from "../interfaces/book.interface";
-import { ITest } from "../interfaces/test.interface";
+import { IQuestion } from "../interfaces/question.interface";
 import cloudinaryService from "./cloudinary.service";
 import { FileType } from "../enums/file-type.enum";
 import { Visibility } from "../enums/visibility.enum";
@@ -107,41 +107,41 @@ class AdminService {
     async getTests(query: SearchQuery) {
         if (query) {
             const { search } = query;
-            return await Test.find({
+            return await Question.find({
                 ...(search ? {title: { $regex: search, $options: 'i'} } : {})
             })
         }
-        return await Test.find()
+        return await Question.find()
     }
 
     async getTestById(id: Types.ObjectId) {
-        const data =  await Test.findById(id)
+        const data =  await Question.findById(id)
         if (!data) throw new NotFoundException(ResourceType.TEST, id)
         return data;
     }
 
-    async createTest(test: ITest, file: string) {
+    async createTest(test: IQuestion, file: string) {
         if (file) 
             test.image = await cloudinaryService.uploadFile(file, Date.now().toString(), FileType.IMAGE, 'css_animation/test_images');
         const { title, themeLink, variants, answer, image } = test;
-        return await Test.create({title, variants, answer, themeLink, image})
+        return await Question.create({title, variants, answer, themeLink, image})
     }
 
-    async updateTest(id: Types.ObjectId, test: ITest, file: string) {
+    async updateTest(id: Types.ObjectId, test: IQuestion, file: string) {
         if (file) {
-            const theTest = await Test.findById(id);
+            const theTest = await Question.findById(id);
             await cloudinaryService.removeFile(theTest.image);
             const url = await cloudinaryService.uploadFile(file, id.toString(), FileType.IMAGE, 'css_animation/test_images')
             test.image = url           
         }
         const { title, themeLink, variants, answer, image } = test;
-        const data =  await Test.findByIdAndUpdate(id, {title, variants, answer, themeLink, image})
+        const data =  await Question.findByIdAndUpdate(id, {title, variants, answer, themeLink, image})
         if (!data) throw new NotFoundException(ResourceType.TEST, id)
         return data;
     }
 
     async deleteTest(id: Types.ObjectId) {
-        const data = await Test.findByIdAndDelete(id)
+        const data = await Question.findByIdAndDelete(id)
         if (!data) throw new NotFoundException(ResourceType.TEST, id)
         if (data.image)
             await cloudinaryService.removeFile(data.image);
@@ -150,7 +150,7 @@ class AdminService {
 
     async switchTestVisibility(id: Types.ObjectId, visibility: Visibility) {
         const isPublished = visibility === Visibility.PUBLISH
-        const data = await Test.findByIdAndUpdate(id, { isPublished })
+        const data = await Question.findByIdAndUpdate(id, { isPublished })
         if (!data) throw new NotFoundException(ResourceType.TEST, id)
         return data;
     }
